@@ -1,0 +1,19 @@
+{
+	"files.associations": {
+		"*.h": "c",
+	},
+	"[c]": {
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false,
+		"editor.rulers": [
+			80
+		],
+		"editor.defaultFormatter": null,
+		"editor.wordBasedSuggestions": "allDocuments",
+		"editor.suggest.insertMode": "replace",
+		"editor.semanticHighlighting.enabled": true,
+		"editor.renderWhitespace": "all",
+		"files.trimTrailingWhitespace": true,
+		"files.insertFinalNewline": true
+	}
+}
