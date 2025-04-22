@@ -14,7 +14,7 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip setuptools
-          python3 -m pip install norminette=3.3.55
+          python3 -m pip install norminette==3.3.55
       - name: Run Norminette
         run: make norm
 
