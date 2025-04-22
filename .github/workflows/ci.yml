@@ -1,0 +1,33 @@
+name: Continuous Integration
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  norm:
+    name: Norminette
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install norminette=3.3.55
+      - name: Run Norminette
+        run: make norm
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+      - name: Build project
+        run: make all
