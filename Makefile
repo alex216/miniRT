@@ -28,7 +28,8 @@ LIBFT_DIR	= libft
 LIBMLX_DIR	= libmlx
 
 # files
-SRC			= $(SRC_DIR)/main.c #\
+SRC			=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/utils/ft_atof.c
 
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
@@ -83,3 +84,5 @@ re: fclean all
 .PHONY: norm
 norm:
 	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
+
+include unit_test.mk
