@@ -163,5 +163,3 @@ re: fclean all
 .PHONY: norm
 norm:
 	norminette $(FILE_DIR) $(INTEGER_DIR) $(LIST_DIR) $(MEMORY_DIR) $(OUTPUT_DIR) $(PRINTF_DIR) $(STRING_DIR) $(TYPE_DIR) $(GNL_DIR) $(INC_DIR)
-
-include unit_test.mk
