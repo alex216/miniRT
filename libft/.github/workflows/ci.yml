@@ -1,0 +1,24 @@
+name: Tests
+on:
+  push:
+jobs:
+  norm:
+    name: norminette
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip setuptools
+          python3 -m pip install norminette
+      - name: Run Norminette
+        run: make norm
+  test:
+    name: google test
+    runs-on: macos-14
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Test
+        run: make test
