@@ -59,7 +59,6 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) $(DEP_FLAGS) -c $< -o $@
 
 $(LIBFT):
-	git submodule update --init
 	make -C $(LIBFT_DIR)
 
 $(LIBMLX):
