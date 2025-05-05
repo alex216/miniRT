@@ -1,35 +1,23 @@
-# shell
-SHELL		= /bin/bash
-UNAME		= $(shell uname)
-
 # executable and archive files
 NAME		= miniRT
 LIBFT		= $(LIBFT_DIR)/libft.a
+LIBMLX		= $(LIBMLX_DIR)/libmlx.a
 
 # compiler options
 CFLAGS		= -Werror -Wextra -Wall
 PROD_FLAGS	= -O3
 DEV_FLAGS	= -O0 -g -fsanitize=address,undefined,integer
 DEP_FLAGS	= -MMD -MP
-INCLUDE		= -I $(INC_DIR) -I $(LIBFT_DIR)/include -I $(LIBMLX_DIR)
-LD_FLAGS	= -L $(LIBFT_DIR) -L $(LIBMLX_DIR)
-LD_LIBS		= -lft
+INCLUDE		= -I$(INC_DIR) -I$(LIBFT_DIR)/include -I$(LIBMLX_DIR)
+LD_FLAGS	= -L$(LIBFT_DIR) -L$(LIBMLX_DIR) -L/usr/X11/lib
+LD_LIBS		= -lft -lmlx -lXext -lX11 -lm -lz
 
 # directories
 SRC_DIR		= src
 BUILD_DIR	= build
 INC_DIR		= include
 LIBFT_DIR	= libft
-
-ifeq ($(UNAME), Linux)
-	LIBMLX		= $(LIBMLX_DIR)/libmlx.a
-	LIBMLX_DIR	= libmlx/linux
-	LD_LIBS		+= -lmlx -lXext -lX11 -lm -lz
-else ifeq ($(UNAME), Darwin)
-	LIBMLX		= $(LIBMLX_DIR)/libmlx.dylib
-	LIBMLX_DIR	= libmlx/macos
-	LD_LIBS		+= -lmlx -framework openGL -framework AppKit
-endif
+LIBMLX_DIR	= libmlx
 
 # files
 SRC			= $(SRC_DIR)/main.c #\
@@ -55,26 +43,12 @@ WHITE		= \033[0;97m
 all: CFLAGS += $(PROD_FLAGS)
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(LIBMLX) $(SRC) $(HEADER)
-	@make _main CFLAGS="$(CFLAGS)"
-
-.PHONY: _main
-_main:
-	@printf "$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(WHITE)compling...$(RESET)\n"
-	@make _build CFLAGS="$(CFLAGS)"
-
-.PHONY: _build
-_build: $(OBJ)
-	@if [ $(UNAME) = "Darwin" ]; then \
-		cp $(LIBMLX) . ; \
-	fi
-	@$(CC) $(OBJ) $(CFLAGS) $(LD_FLAGS) $(LD_LIBS) -o $(NAME)
-	@printf "\n$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(GREEN)compiled ✔$(RESET)\n"
+$(NAME): $(LIBFT) $(LIBMLX) $(OBJ)
+	$(CC) $(CFLAGS) $(LD_FLAGS) $(LD_LIBS) $(OBJ) -o $(NAME)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) $(INCLUDE) $(DEP_FLAGS) -c $< -o $@
-	@printf "$(GREEN)─$(RESET)"
+	$(CC) $(CFLAGS) $(INCLUDE) $(DEP_FLAGS) -c $< -o $@
 
 $(LIBFT):
 	git submodule update --init
@@ -89,17 +63,12 @@ $(LIBMLX):
 clean:
 	-@make clean -C $(LIBFT_DIR)
 	@make clean -C $(LIBMLX_DIR)
-	@if [ $(UNAME) = "Darwin" ]; then \
-		$(RM) $(shell basename $(LIBMLX)) ; \
-	fi
-	@$(RM) $(OBJ) $(DEP)
-	@printf "$(BLUE)[$(NAME)]\t\tobject files$(RESET)\t$(GREEN)deleted ✔$(RESET)\n"
+	$(RM) $(OBJ) $(DEP)
 
 .PHONY: fclean
 fclean: clean
 	-@make fclean -C $(LIBFT_DIR)
-	@$(RM) $(NAME)
-	@printf "$(BLUE)[$(NAME)]\t\t./$(NAME)$(RESET)\t\t$(GREEN)deleted ✔$(RESET)\n"
+	$(RM) $(NAME)
 
 .PHONY: re
 re: fclean all
