@@ -1,3 +1,6 @@
+# OS detection
+UNAME_S := $(shell uname -s)
+
 # executable and archive files
 NAME		= miniRT
 LIBFT		= $(LIBFT_DIR)/libft.a
@@ -9,8 +12,13 @@ PROD_FLAGS	= -O3
 DEV_FLAGS	= -O0 -g -fsanitize=address,undefined,integer
 DEP_FLAGS	= -MMD -MP
 INCLUDE		= -I$(INC_DIR) -I$(LIBFT_DIR)/include -I$(LIBMLX_DIR)
-LD_FLAGS	= -L$(LIBFT_DIR) -L$(LIBMLX_DIR) -L/usr/X11/lib
+
+# library paths and flags
+LD_FLAGS	= -L$(LIBFT_DIR) -L$(LIBMLX_DIR)
 LD_LIBS		= -lft -lmlx -lXext -lX11 -lm -lz
+ifeq ($(UNAME_S),Darwin)
+	LD_FLAGS	+= -L/usr/X11/lib
+endif
 
 # directories
 SRC_DIR		= src
