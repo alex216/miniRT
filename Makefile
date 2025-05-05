@@ -52,7 +52,7 @@ all: CFLAGS += $(PROD_FLAGS)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(LIBMLX) $(OBJ)
-	$(CC) $(CFLAGS) $(LD_FLAGS) $(LD_LIBS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LD_FLAGS) $(LD_LIBS) -o $(NAME)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
