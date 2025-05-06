@@ -2,7 +2,7 @@
 
 extern "C"
 {
-#include "minirt.h"
+#include "scene.h"
 #include "parser.h"
 }
 

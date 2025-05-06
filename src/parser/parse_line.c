@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:39:40 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/06 19:36:16 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/06 21:44:52 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #define MAX_LINE_LENGTH 256
 #define MAX_TOKENS 10
 
-#include "minirt.h"
+#include "scene.h"
 #include "parser.h"
 #include "utils.h"
 
