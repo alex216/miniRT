@@ -1,0 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   geometric.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/07 00:14:16 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/07 00:19:13 by reasuke          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <math.h>
+#include <stdbool.h>
+
+#include "vector.h"
+
+double	vec3_dot(t_vec3 a, t_vec3 b)
+{
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
+}
+
+t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
+{
+	return ((t_vec3){{a.y * b.z - a.z * b.y,
+		a.z * b.x - a.x * b.z,
+		a.x * b.y - a.y * b.x}});
+}
+
+double	vec3_length(t_vec3 a)
+{
+	return (sqrt(vec3_dot(a, a)));
+}
+
+t_vec3	vec3_normalize(t_vec3 a)
+{
+	double	len;
+
+	len = vec3_length(a);
+	if (len == 0)
+		return ((t_vec3){{0, 0, 0}});
+	return (vec3_scale(a, 1 / len));
+}
+
+bool	vec3_is_parallel(t_vec3 a, t_vec3 b)
+{
+	t_vec3	cross;
+
+	cross = vec3_cross(a, b);
+	return (vec3_length(cross) < EPSILON);
+}
