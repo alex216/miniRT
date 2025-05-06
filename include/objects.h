@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/05 10:11:07 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/06 21:40:43 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,30 @@ typedef enum e_object_type
 
 typedef struct s_sphere
 {
-	t_rgb	center;
+	t_vec3	center;
 	double	radius;
 	t_rgb	color;
 }			t_sphere;
 
 typedef struct s_circle
 {
-	t_rgb	center;
-	t_rgb	normal;
+	t_vec3	center;
+	t_vec3	normal;
 	double	radius;
 	t_rgb	color;
 }			t_circle;
 
 typedef struct s_plane
 {
-	t_rgb	point;
-	t_rgb	normal;
+	t_vec3	point;
+	t_vec3	normal;
 	t_rgb	color;
 }			t_plane;
 
 typedef struct s_cylinder
 {
-	t_rgb	center;
-	t_rgb	axis;
+	t_vec3	center;
+	t_vec3	axis;
 	double	radius;
 	double	height;
 	t_rgb	color;
@@ -57,8 +57,8 @@ typedef struct s_cylinder
 
 typedef struct s_cone
 {
-	t_rgb	apex;
-	t_rgb	axis;
+	t_vec3	apex;
+	t_vec3	axis;
 	double	radius;
 	double	height;
 	t_rgb	color;
