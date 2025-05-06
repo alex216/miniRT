@@ -6,14 +6,13 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:28:52 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/06 19:21:43 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/06 19:30:19 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_UTILS_H
 # define MLX_UTILS_H
 
-# include "key_codes.h"
 # include "mlx.h"
 
 # define WINDOW_TITLE "MiniRT"

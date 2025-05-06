@@ -18,6 +18,7 @@ LD_FLAGS	= -L$(LIBFT_DIR) -L$(LIBMLX_DIR)
 LD_LIBS		= -lft -lmlx -lXext -lX11 -lm -lz
 ifeq ($(UNAME_S),Darwin)
 	LD_FLAGS	+= -L/usr/X11/lib
+	INCLUDE		+= -I/usr/X11/include
 endif
 
 # directories
