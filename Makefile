@@ -31,6 +31,7 @@ LIBMLX_DIR	= libmlx
 SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/mlx_utils/constructor.c \
 				$(SRC_DIR)/mlx_utils/destructor.c \
+				$(SRC_DIR)/mlx_utils/handle_events.c \
 				$(SRC_DIR)/utils/error.c
 
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
