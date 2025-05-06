@@ -62,6 +62,7 @@ dkms.conf
 # executable file
 miniRT
 
-# tests
+# Google test
+googletest/
 gtest
 unit_tester
