@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   destructor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 16:17:12 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/06 18:29:55 by reasuke          ###   ########.fr       */
+/*   Created: 2025/05/06 18:42:22 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/06 18:45:00 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
 #include "mlx_utils.h"
 
-int	main(int argc, char **argv)
+void	destroy_mlx_conf(t_mlx_conf *mlx_conf)
 {
-	void	*mlx;
-	void	*window;
-
-	(void)argc;
-	(void)argv;
-	mlx = mlx_init();
-	if (!mlx)
-		return (1);
-	window = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
-	if (!window)
-		return (1);
-	mlx_loop(mlx);
-	return (0);
+	if (mlx_conf == NULL)
+		return ;
+	mlx_destroy_image(mlx_conf->mlx, mlx_conf->img);
+	mlx_destroy_window(mlx_conf->mlx, mlx_conf->win);
+	free(mlx_conf);
 }

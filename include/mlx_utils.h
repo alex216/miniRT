@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 16:17:12 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/06 18:29:55 by reasuke          ###   ########.fr       */
+/*   Created: 2025/05/06 18:28:52 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/06 18:40:25 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_utils.h"
+#ifndef MLX_UTILS
+# define MLX_UTILS
 
-int	main(int argc, char **argv)
+# include "mlx.h"
+
+#define WINDOW_TITLE "MiniRT"
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
+
+typedef struct s_mlx_conf
 {
 	void	*mlx;
-	void	*window;
+	void	*win;
+	void	*img;
+	char	*data;
+	int		line_length;
+	int		bits_per_pixel;
+	int		endian;
+}	t_mlx_conf;
 
-	(void)argc;
-	(void)argv;
-	mlx = mlx_init();
-	if (!mlx)
-		return (1);
-	window = mlx_new_window(mlx, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE);
-	if (!window)
-		return (1);
-	mlx_loop(mlx);
-	return (0);
-}
+t_mlx_conf	*construct_mlx_conf(void);
+
+#endif
