@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:14:16 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/07 00:19:13 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/07 11:31:47 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ double	vec3_dot(t_vec3 a, t_vec3 b)
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 {
 	return ((t_vec3){{a.y * b.z - a.z * b.y,
-		a.z * b.x - a.x * b.z,
-		a.x * b.y - a.y * b.x}});
+			a.z * b.x - a.x * b.z,
+			a.x * b.y - a.y * b.x}});
 }
 
 double	vec3_length(t_vec3 a)
