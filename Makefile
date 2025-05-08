@@ -18,6 +18,7 @@ LD_FLAGS	= -L$(LIBFT_DIR) -L$(LIBMLX_DIR)
 LD_LIBS		= -lft -lmlx -lXext -lX11 -lm -lz
 ifeq ($(UNAME_S),Darwin)
 	LD_FLAGS	+= -L/usr/X11/lib
+	INCLUDE		+= -I/usr/X11/include
 endif
 
 # directories
@@ -29,6 +30,11 @@ LIBMLX_DIR	= libmlx
 
 # files
 SRC			= $(SRC_DIR)/main.c \
+				$(SRC_DIR)/mlx_utils/constructor.c \
+				$(SRC_DIR)/mlx_utils/destructor.c \
+				$(SRC_DIR)/mlx_utils/handle_events.c \
+				$(SRC_DIR)/mlx_utils/plot_pixel.c \
+				$(SRC_DIR)/utils/error.c \
 				$(SRC_DIR)/vec3/arithmetic.c \
 				$(SRC_DIR)/vec3/geometric.c
 
