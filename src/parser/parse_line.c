@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:39:40 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/06 21:44:52 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/08 18:16:54 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,19 +101,19 @@ void	parse_line(const char *line, t_scene *scene)
 	token = next_token(&line, ft_isspace);
 	if (!token)
 		return ;
-	if (ft_strncmp(token, "A", 2) == 0)
+	if (ft_strncmp(token, "A", 1) == 0)
 		parse_ambient(&line, scene);
-	else if (strncmp(token, "C", 2) == 0)
+	else if (strncmp(token, "C", 1) == 0)
 		parse_camera(&line, scene);
-	else if (strncmp(token, "L", 2) == 0)
+	else if (strncmp(token, "L", 1) == 0)
 		parse_light(&line, scene);
-	else if (strncmp(token, "sp", 3) == 0)
+	else if (strncmp(token, "sp", 2) == 0)
 		parse_sphere(&line, scene);
-	else if (strncmp(token, "pl", 3) == 0)
+	else if (strncmp(token, "pl", 2) == 0)
 		parse_plane(&line, scene);
-	else if (strncmp(token, "cy", 3) == 0)
+	else if (strncmp(token, "cy", 2) == 0)
 		parse_cylinder(&line, scene);
-	else if (strncmp(token, "co", 3) == 0)
+	else if (strncmp(token, "co", 2) == 0)
 		parse_cone(&line, scene);
 	else
 	{
