@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tracer.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 16:17:12 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/10 01:50:09 by reasuke          ###   ########.fr       */
+/*   Created: 2025/05/10 01:44:48 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/10 01:49:07 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_utils.h"
-#include "tracer.h"
+#ifndef TRACER_H
+# define TRACER_H
 
-int	main(int argc, char **argv)
+# include "mlx_utils.h"
+# include "vector.h"
+
+typedef struct s_ray
 {
-	t_mlx_conf	*mlx_conf;
+	t_vec3	origin;
+	t_vec3	direction;
+}	t_ray;
 
-	(void)argc;
-	(void)argv;
-	mlx_conf = construct_mlx_conf();
-	handle_events(mlx_conf);
-	render(mlx_conf);
-	mlx_loop(mlx_conf->mlx);
-	return (0);
-}
+void	render(t_mlx_conf *mlx_conf);
+
+#endif
