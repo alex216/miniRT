@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 20:10:32 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/09 00:40:01 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 01:36:47 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,26 @@ void	init_viewport(t_viewport *vp, t_camera camera)
 	t_vec3	fwd;
 	t_vec3	center;
 	double	aspect_ratio;
-	t_vec3	right_dir;
-	t_vec3	down_dir;
+	double	width;
+	double	height;
 
 	fwd = vec3_normalize(camera.orientation);
 	center = vec3_add(camera.position, fwd);
 	aspect_ratio = (double)WINDOW_WIDTH / WINDOW_HEIGHT;
-	vp->width = 2 * tan(degree_to_rad(camera.fov) / 2);
-	vp->height = vp->width / aspect_ratio;
-	right_dir = vec3_normalize(vec3_cross(fwd, select_world_up(camera)));
-	down_dir = vec3_normalize(vec3_cross(fwd, right_dir));
-	vp->origin = vec3_add(center, vec3_add(
-				vec3_scale(right_dir, -vp->width / 2),
-				vec3_scale(down_dir, -vp->height / 2)));
-	vp->right = vec3_scale(right_dir, vp->width / (WINDOW_WIDTH - 1));
-	vp->down = vec3_scale(down_dir, vp->height / (WINDOW_HEIGHT - 1));
+	width = 2 * tan(degree_to_rad(camera.fov) / 2);
+	height = width / aspect_ratio;
+	vp->dx = vec3_scale(
+			vec3_normalize(vec3_cross(fwd, select_world_up(camera))),
+			width / (WINDOW_WIDTH - 1)
+			);
+	vp->dy = vec3_scale(
+			vec3_normalize(vec3_cross(fwd, vec3_normalize(vp->dx))),
+			height / (WINDOW_HEIGHT - 1)
+			);
+	vp->origin = vec3_add(
+			center, vec3_add(
+				vec3_scale(vec3_normalize(vp->dx), -width / 2),
+				vec3_scale(vec3_normalize(vp->dy), -height / 2)
+				)
+			);
 }
