@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:51:42 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 21:43:07 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 21:50:07 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,6 @@ void	stub_init_scene(t_scene *scene)
 	scene->objects = NULL;
 	if (stub_add_three_spheres(scene) == 0)
 		fatal_error("Failed to add spheres");
+	if (stub_add_lights(scene) == 0)
+		fatal_error("Failed to add lights");
 }
