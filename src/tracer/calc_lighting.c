@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:21:34 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 21:41:04 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 21:44:12 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene)
 	t_light	*light;
 	t_rgb	color;
 
-	color = (t_rgb){{0, 0, 0}};
+	color = hit_record.color;
 	current_light = scene.lights;
 	while (current_light)
 	{

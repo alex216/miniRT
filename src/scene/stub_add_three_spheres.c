@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stub.c                                             :+:      :+:    :+:   */
+/*   stub_add_three_spheres.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 17:51:42 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 17:56:23 by reasuke          ###   ########.fr       */
+/*   Created: 2025/05/10 21:42:25 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/10 21:42:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static int	add_sphere_to_scene(t_scene *scene, t_vec3 center, double radius,
 	return (1);
 }
 
-static int	add_three_spheres(t_scene *scene)
+int	stub_add_three_spheres(t_scene *scene)
 {
 	if (add_sphere_to_scene(scene, (t_vec3){{0, 0.2, -1}}, 0.5,
 		(t_rgb){{1.0, 0.2, 0.2}}) == 0)
@@ -80,18 +80,4 @@ static int	add_three_spheres(t_scene *scene)
 		(t_rgb){{0.2, 1.0, 0.2}}) == 0)
 		return (0);
 	return (1);
-}
-
-// TODO: delete this stub
-void	stub_init_scene(t_scene *scene)
-{
-	scene->ambient.ratio = 0.5;
-	scene->ambient.color = (t_rgb){{1, 1, 1}};
-	scene->camera.position = (t_vec3){{0, 0, 1}};
-	scene->camera.orientation = (t_vec3){{0, 0, -1}};
-	scene->camera.fov = 70;
-	scene->lights = NULL;
-	scene->objects = NULL;
-	if (add_three_spheres(scene) == 0)
-		fatal_error("Failed to add spheres");
 }

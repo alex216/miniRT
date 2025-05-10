@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/10 17:52:40 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 21:42:55 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ typedef struct s_scene
 }					t_scene;
 
 void	stub_init_scene(t_scene *scene);
+int		stub_add_three_spheres(t_scene *scene);
 
 #endif

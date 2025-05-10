@@ -34,7 +34,8 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/mlx_utils/destructor.c \
 				$(SRC_DIR)/mlx_utils/handle_events.c \
 				$(SRC_DIR)/mlx_utils/plot_pixel.c \
-				$(SRC_DIR)/scene/stub.c \
+				$(SRC_DIR)/scene/stub_init_scene.c \
+				$(SRC_DIR)/scene/stub_add_three_spheres.c \
 				$(SRC_DIR)/tracer/calc_lighting.c \
 				$(SRC_DIR)/tracer/intersect_object.c \
 				$(SRC_DIR)/tracer/trace_ray.c \
