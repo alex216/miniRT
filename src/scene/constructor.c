@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 00:10:25 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/11 00:11:32 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 00:16:34 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ t_object	*construct_object(t_object_type type, void *data)
 	obj->data = data;
 	return (obj);
 }
-
