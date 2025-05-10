@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 19:58:04 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 01:38:59 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 15:31:03 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@
  * - X-axis corresponds to the horizontal direction (right is positive)
  * - Y-axis corresponds to the vertical direction (down is positive)
  *
+ *         y
+ *         ^
+ *         |
+ *         |                   (right-handed coordinate system)
+ *         |
+ *         |
+ *   ------o----------> +x
+ *        /|
+ *       / |
+ *      /  |
+ * 	   v
+ *   z
+ *
  * The viewport is represented by:
  * - origin: Top-left corner of the viewport
  * - dx: Unit step vector in the horizontal direction (per pixel)
@@ -31,6 +44,29 @@
  *
  * These vectors allow for mapping from pixel coordinates (i,j) to
  * world coordinates using: origin + i*dx + j*dy
+ *
+ * Viewport (2D representation with grid points):
+ *
+ *   Origin
+ *   (0,0)       (1,0)       (2,0)       (3,0)
+ *     o----dx---->o----dx---->o----dx---->o-----> +x
+ *     |           |           |           |
+ *     |           |           |           |
+ *    dy          dy          dy          dy
+ *     |           |           |           |
+ *     v           |           |           |
+ *   (0,1)       (1,1)       (2,1)       (3,1)
+ *     o----dx---->o----dx---->o----dx---->o
+ *     |           |           |           |
+ *     |           |           |           |
+ *    dy          dy          dy          dy
+ *     |           |           |           |
+ *     v           |           |           |
+ *   (0,2)       (1,2)       (2,2)       (3,2)
+ *     o----dx---->o----dx---->o----dx---->o
+ *     |           |           |           |
+ *     v           |           |           |
+ *    +y
  */
 typedef struct s_viewport
 {
