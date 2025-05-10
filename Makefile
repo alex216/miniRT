@@ -34,6 +34,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/mlx_utils/destructor.c \
 				$(SRC_DIR)/mlx_utils/handle_events.c \
 				$(SRC_DIR)/mlx_utils/plot_pixel.c \
+				$(SRC_DIR)/scene/constructor.c \
 				$(SRC_DIR)/scene/stub_init_scene.c \
 				$(SRC_DIR)/scene/stub_add_objects.c \
 				$(SRC_DIR)/scene/stub_lighting.c \

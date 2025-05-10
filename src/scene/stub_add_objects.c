@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:42:25 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/11 00:09:19 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 00:12:28 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,6 @@
 
 #include "scene.h"
 #include "utils.h"
-
-static t_sphere	*construct_sphere_data(t_vec3 center, double radius,
-										t_rgb color)
-{
-	t_sphere	*sphere;
-
-	sphere = (t_sphere *)malloc(sizeof(t_sphere));
-	if (sphere == NULL)
-		return (NULL);
-	sphere->center = center;
-	sphere->radius = radius;
-	sphere->color = color;
-	return (sphere);
-}
-
-static t_plane	*construct_plane_data(t_vec3 point, t_vec3 normal,
-									t_rgb color)
-{
-	t_plane	*plane;
-
-	plane = (t_plane *)malloc(sizeof(t_plane));
-	if (plane == NULL)
-		return (NULL);
-	plane->point = point;
-	plane->normal = normal;
-	plane->color = color;
-	return (plane);
-}
-
-static t_object	*construct_object(t_object_type type, void *data)
-{
-	t_object	*obj;
-
-	obj = (t_object *)malloc(sizeof(t_object));
-	if (obj == NULL)
-		return (NULL);
-	obj->type = type;
-	obj->data = data;
-	return (obj);
-}
 
 static int	add_sphere_to_scene(t_scene *scene, t_vec3 center, double radius,
 								t_rgb color)
