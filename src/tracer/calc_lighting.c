@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:21:34 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 23:11:29 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 23:34:49 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,28 @@ static t_rgb	calc_ambient_contribution(t_hit_record hit_record,
 		));
 }
 
-t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene)
+static t_rgb	calc_specular_contribution(t_hit_record hit_record,
+											t_light *light, t_ray ray)
+{
+	const t_vec3	light_dir
+		= vec3_normalize(vec3_sub(light->position, hit_record.point));
+	const t_vec3	view_dir
+		= vec3_normalize(vec3_sub(ray.origin, hit_record.point));
+	const t_vec3	reflect_dir
+		= vec3_reflect(light_dir, hit_record.normal);
+	const double	specular_factor
+		= pow(fmax(0.0, vec3_dot(view_dir, reflect_dir)), SPECULAR_POWER);
+
+	return (vec3_scale(
+			light->color,
+			specular_factor * light->brightness
+		));
+}
+
+t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene, t_ray ray)
 {
 	t_rgb	diffuse;
+	t_rgb	specular;
 	t_list	*current_light;
 	t_light	*light;
 	t_rgb	color;
@@ -86,6 +105,8 @@ t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene)
 		{
 			diffuse = calc_diffuse_contribution(hit_record, light);
 			color = vec3_add(color, diffuse);
+			specular = calc_specular_contribution(hit_record, light, ray);
+			color = vec3_add(color, specular);
 		}
 		current_light = current_light->next;
 	}
