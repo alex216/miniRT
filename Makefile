@@ -34,6 +34,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/mlx_utils/destructor.c \
 				$(SRC_DIR)/mlx_utils/handle_events.c \
 				$(SRC_DIR)/mlx_utils/plot_pixel.c \
+				$(SRC_DIR)/tracer/trace_ray.c \
 				$(SRC_DIR)/tracer/render.c \
 				$(SRC_DIR)/utils/error.c \
 				$(SRC_DIR)/vec3/arithmetic.c \

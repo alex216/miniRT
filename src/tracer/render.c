@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 01:46:44 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 16:35:10 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 17:00:12 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,19 @@ t_ray	create_ray(t_camera cam, t_vec3 pixel)
 	return (ray);
 }
 
+static int	rgb_to_int(t_rgb color)
+{
+	t_vec3	rgb_255;
+
+	rgb_255 = vec3_scale(color, 255.999);
+	return ((int)(rgb_255.x) << 16 | (int)(rgb_255.y) << 8 | (int)(rgb_255.z));
+}
+
 void	render(t_scene scene, t_mlx_conf *mlx_conf)
 {
 	t_viewport	vp;
 	t_ray		ray;
+	t_rgb		color;
 	int			x;
 	int			y;
 
@@ -48,8 +57,8 @@ void	render(t_scene scene, t_mlx_conf *mlx_conf)
 		while (x < WINDOW_WIDTH)
 		{
 			ray = create_ray(scene.camera, calc_pixel_position(vp, x, y));
-			(void)ray;
-			plot_pixel(mlx_conf, x, y, 0x00FF00); // Placeholder color
+			color = trace_ray(ray, scene);
+			plot_pixel(mlx_conf, x, y, rgb_to_int(color));
 			x++;
 		}
 		y++;
