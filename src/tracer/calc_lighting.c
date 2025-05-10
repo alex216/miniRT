@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:21:34 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 21:45:59 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 22:01:45 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ static t_rgb	calc_diffuse_contribution(t_hit_record hit_record,
 		));
 }
 
+static t_rgb	calc_ambient_contribution(t_hit_record hit_record,
+											t_scene scene)
+{
+	return (vec3_scale(
+			vec3_hadamard(hit_record.color, scene.ambient.color),
+			scene.ambient.ratio
+		));
+}
+
 t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene)
 {
 	t_rgb	diffuse;
@@ -61,7 +70,7 @@ t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene)
 	t_light	*light;
 	t_rgb	color;
 
-	color = (t_rgb){{0, 0, 0}};
+	color = calc_ambient_contribution(hit_record, scene);
 	current_light = scene.lights;
 	while (current_light)
 	{
@@ -73,5 +82,6 @@ t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene)
 		}
 		current_light = current_light->next;
 	}
+	color = vec3_clump(color, 0, 1);
 	return (color);
 }

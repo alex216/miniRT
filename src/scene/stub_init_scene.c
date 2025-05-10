@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:51:42 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 21:50:07 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 22:02:05 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // TODO: delete this stub
 void	stub_init_scene(t_scene *scene)
 {
-	scene->ambient.ratio = 0.5;
+	scene->ambient.ratio = 0.1;
 	scene->ambient.color = (t_rgb){{1, 1, 1}};
 	scene->camera.position = (t_vec3){{0, 0, 1}};
 	scene->camera.orientation = (t_vec3){{0, 0, -1}};
