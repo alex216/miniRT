@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:14:16 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/08 20:06:00 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 23:34:59 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,12 @@ bool	vec3_is_parallel(t_vec3 a, t_vec3 b)
 
 	cross = vec3_cross(a, b);
 	return (vec3_length(cross) < EPSILON);
+}
+
+t_vec3	vec3_reflect(t_vec3 incident, t_vec3 normal)
+{
+	double	dot_product;
+
+	dot_product = vec3_dot(incident, normal);
+	return (vec3_sub(vec3_scale(normal, 2.0 * dot_product), incident));
 }
