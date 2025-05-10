@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 11:00:30 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/07 00:19:55 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 21:55:33 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_vec3	vec3_add(t_vec3 a, t_vec3 b);
 t_vec3	vec3_sub(t_vec3 a, t_vec3 b);
 t_vec3	vec3_hadamard(t_vec3 a, t_vec3 b);
 t_vec3	vec3_scale(t_vec3 a, double s);
+t_vec3	vec3_clump(t_vec3 a, double min, double max);
 
 // geometric.c
 double	vec3_dot(t_vec3 a, t_vec3 b);
