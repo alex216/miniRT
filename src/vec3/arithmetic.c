@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:13:53 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 21:55:51 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 23:02:57 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_vec3	vec3_scale(t_vec3 a, double s)
 	return ((t_vec3){{a.x * s, a.y * s, a.z * s}});
 }
 
-t_vec3	vec3_clump(t_vec3 a, double min, double max)
+t_vec3	vec3_clamp(t_vec3 a, double min, double max)
 {
 	return ((t_vec3){{fmax(min, fmin(a.x, max)),
 			fmax(min, fmin(a.y, max)),

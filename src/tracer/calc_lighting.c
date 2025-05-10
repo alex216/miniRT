@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:21:34 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 22:01:45 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 23:02:57 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene)
 		}
 		current_light = current_light->next;
 	}
-	color = vec3_clump(color, 0, 1);
+	color = vec3_clamp(color, 0, 1);
 	return (color);
 }
