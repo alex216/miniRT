@@ -6,11 +6,10 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:14:16 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/08 20:06:00 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 23:41:08 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include <stdbool.h>
 
 #include "vector.h"
@@ -27,11 +26,6 @@ t_vec3	vec3_cross(t_vec3 a, t_vec3 b)
 			a.x * b.y - a.y * b.x}});
 }
 
-double	vec3_length(t_vec3 a)
-{
-	return (sqrt(vec3_dot(a, a)));
-}
-
 t_vec3	vec3_normalize(t_vec3 a)
 {
 	double	len;
@@ -42,10 +36,10 @@ t_vec3	vec3_normalize(t_vec3 a)
 	return (vec3_scale(a, 1 / len));
 }
 
-bool	vec3_is_parallel(t_vec3 a, t_vec3 b)
+t_vec3	vec3_reflect(t_vec3 incident, t_vec3 normal)
 {
-	t_vec3	cross;
+	double	dot_product;
 
-	cross = vec3_cross(a, b);
-	return (vec3_length(cross) < EPSILON);
+	dot_product = vec3_dot(incident, normal);
+	return (vec3_sub(vec3_scale(normal, 2.0 * dot_product), incident));
 }
