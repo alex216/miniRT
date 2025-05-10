@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:59:52 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 20:40:03 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 20:43:30 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_rgb	trace_ray(t_ray ray, t_scene scene)
 		list_obj = list_obj->next;
 	}
 	if (hit_anything)
-		return (closest_hit.color);
+		return (calc_lighting(closest_hit, scene));
 	else
 		return ((t_rgb){{0, 0, 0}});
 }
