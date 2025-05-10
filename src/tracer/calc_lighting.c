@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:21:34 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 23:02:57 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 23:11:29 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 #include "scene.h"
 #include "vector.h"
 
+/*
+** Note: The RAY_T_MIN offset is necessary to prevent the "shadow acne" problem.
+** Due to floating-point precision errors, without this small offset,
+** the ray would incorrectly self-intersect with the surface it originated from.
+*/
 static bool	is_illuminated(t_vec3 hit_point, t_vec3 light_pos, t_scene scene)
 {
 	t_ray			light_ray;
@@ -24,8 +29,10 @@ static bool	is_illuminated(t_vec3 hit_point, t_vec3 light_pos, t_scene scene)
 	double			light_distance;
 	t_list			*current_obj;
 
-	light_ray.origin = hit_point;
 	light_ray.direction = vec3_normalize(vec3_sub(light_pos, hit_point));
+	light_ray.origin = vec3_add(hit_point,
+			vec3_scale(light_ray.direction, RAY_T_MIN)
+			);
 	light_distance = vec3_length(vec3_sub(light_pos, hit_point));
 	current_obj = scene.objects;
 	while (current_obj)
