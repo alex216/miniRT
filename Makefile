@@ -35,6 +35,7 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/mlx_utils/handle_events.c \
 				$(SRC_DIR)/mlx_utils/plot_pixel.c \
 				$(SRC_DIR)/scene/stub.c \
+				$(SRC_DIR)/tracer/intersect_object.c \
 				$(SRC_DIR)/tracer/trace_ray.c \
 				$(SRC_DIR)/tracer/render.c \
 				$(SRC_DIR)/utils/error.c \
