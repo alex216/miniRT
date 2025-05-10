@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 20:10:32 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 15:12:33 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/10 15:32:46 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static double	degree_to_rad(t_degree deg)
 void	init_viewport(t_viewport *vp, t_camera camera)
 {
 	const t_vec3	fwd = vec3_normalize(camera.orientation);
-	const t_vec3	center= vec3_add(camera.position, fwd);
-	const double	aspect_ratio= (double)WINDOW_WIDTH / WINDOW_HEIGHT;
+	const t_vec3	center = vec3_add(camera.position, fwd);
+	const double	aspect_ratio = (double)WINDOW_WIDTH / WINDOW_HEIGHT;
 	const double	width = 2 * tan(degree_to_rad(camera.fov) / 2);
 	const double	height = width / aspect_ratio;
 
