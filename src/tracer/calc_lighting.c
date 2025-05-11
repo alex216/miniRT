@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:21:34 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 23:34:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 22:10:36 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static t_rgb	calc_specular_contribution(t_hit_record hit_record,
 	const t_vec3	view_dir
 		= vec3_normalize(vec3_sub(ray.origin, hit_record.point));
 	const t_vec3	reflect_dir
-		= vec3_reflect(light_dir, hit_record.normal);
+		= vec3_reflect(vec3_negate(light_dir), hit_record.normal);
 	const double	specular_factor
 		= pow(fmax(0.0, vec3_dot(view_dir, reflect_dir)), SPECULAR_POWER);
 

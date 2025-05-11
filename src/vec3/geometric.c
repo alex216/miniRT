@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:14:16 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/11 22:08:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 22:10:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ t_vec3	vec3_normalize(t_vec3 a)
 	if (len < EPSILON)
 		return ((t_vec3){{0, 0, 0}});
 	return (vec3_scale(a, 1 / len));
+}
+
+t_vec3	vec3_negate(t_vec3 a)
+{
+	return ((t_vec3){{-a.x, -a.y, -a.z}});
 }
 
 /*
