@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:54:47 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/08 21:29:42 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/11 17:08:51 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include "scene.h"
 # include "utils.h"
 # include <errno.h>
+
+typedef struct t_object_count
+{
+	unsigned int ambient;
+	unsigned int camera;
+	unsigned int light;
+}	t_object_count;
 
 double	parse_ratio(const char *str);
 t_rgb	parse_color(const char *str);

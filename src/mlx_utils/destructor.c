@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_xlstnew.c                                       :+:      :+:    :+:   */
+/*   destructor.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
+/*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 18:45:23 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 17:09:02 by yliu             ###   ########.fr       */
+/*   Created: 2025/05/06 18:42:22 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/06 19:29:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include <stdlib.h>
 
-t_list	*ft_xlstnew(void *content)
+#include "mlx_utils.h"
+
+void	destroy_mlx_conf(t_mlx_conf *mlx_conf)
 {
-	t_list *new_node;
-
-	new_node = ft_lstnew(content);
-	if (!new_node)
-		fatal_error("Failed to allocate memory for new list node");
-	return (new_node);
+	if (mlx_conf == NULL)
+		return ;
+	mlx_destroy_image(mlx_conf->mlx, mlx_conf->img);
+	mlx_destroy_window(mlx_conf->mlx, mlx_conf->win);
+	free(mlx_conf);
 }

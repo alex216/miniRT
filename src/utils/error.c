@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_xlstnew.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
+/*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 18:45:23 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 17:09:02 by yliu             ###   ########.fr       */
+/*   Created: 2025/05/06 18:49:07 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/06 18:54:24 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-t_list	*ft_xlstnew(void *content)
+#include "libft.h"
+#include "mlx_utils.h"
+
+void	fatal_error(const char *msg)
 {
-	t_list *new_node;
-
-	new_node = ft_lstnew(content);
-	if (!new_node)
-		fatal_error("Failed to allocate memory for new list node");
-	return (new_node);
+	ft_dprintf(STDERR_FILENO, "%s: %s\n", WINDOW_TITLE, msg);
+	exit(EXIT_FAILURE);
 }

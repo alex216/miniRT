@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 16:30:08 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/05 18:27:12 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/11 17:09:02 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	is_vec3(const char *str)
 		return (false);
 	result = ft_split(str, ',');
 	if (!result)
-		exit_with_errmsg("Memory allocation failed");
+		fatal_error("Memory allocation failed");
 	if (!is_double(result[0]) || !is_double(result[1]) || !is_double(result[2]))
 	{
 		free(result);

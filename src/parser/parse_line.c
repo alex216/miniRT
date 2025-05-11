@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:39:40 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/08 20:59:32 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/11 17:09:38 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ static void	parse_ambient(const char **line, t_scene *scene)
 
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing ambient light ratio");
+		fatal_error("Missing ambient light ratio");
 	scene->ambient.ratio = parse_ratio(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing ambient light color");
+		fatal_error("Missing ambient light color");
 	scene->ambient.color = parse_color(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (token)
-		exit_with_errmsg("Too many arguments for ambient light");
+		fatal_error("Too many arguments for ambient light");
 }
 
 // syntax: C [position] [orientation] [fov]
@@ -47,22 +47,22 @@ static void	parse_camera(const char **line, t_scene *scene)
 
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing camera position");
+		fatal_error("Missing camera position");
 	scene->camera.position = parse_vector(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing camera orientation");
+		fatal_error("Missing camera orientation");
 	scene->camera.orientation = parse_vector(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing camera field of view");
+		fatal_error("Missing camera field of view");
 	scene->camera.fov = parse_degree(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (token)
-		exit_with_errmsg("Too many arguments for camera");
+		fatal_error("Too many arguments for camera");
 }
 
 // syntax: L [position] [brightness] [color]
@@ -73,23 +73,23 @@ static void	parse_light(const char **line, t_scene *scene)
 
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing light position");
+		fatal_error("Missing light position");
 	light = ft_xmalloc(sizeof(t_light));
 	light->position = parse_vector(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing light brightness");
+		fatal_error("Missing light brightness");
 	light->brightness = parse_positive_double(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
-		exit_with_errmsg("Missing light color");
+		fatal_error("Missing light color");
 	light->color = parse_color(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (token)
-		exit_with_errmsg("Too many arguments for light");
+		fatal_error("Too many arguments for light");
 	ft_lstadd_back(&scene->lights, ft_xlstnew(light));
 }
 
@@ -106,21 +106,21 @@ void	parse_line(const char *line, t_scene *scene,
 		parse_ambient(&line, scene);
 		object_count->ambient++;
 		if (object_count->ambient > 1)
-			exit_with_errmsg("Too many ambient lights");
+			fatal_error("Too many ambient lights");
 	}
 	else if (strncmp(token, "C", 1) == 0)
 	{
 		parse_camera(&line, scene);
 		object_count->camera++;
 		if (object_count->camera > 1)
-			exit_with_errmsg("Too many cameras");
+			fatal_error("Too many cameras");
 	}
 	else if (strncmp(token, "L", 1) == 0)
 	{
 		parse_light(&line, scene);
 		object_count->light++;
 		if (object_count->light > MAX_LIGHTS)
-			exit_with_errmsg("Too many lights");
+			fatal_error("Too many lights");
 	}
 	else if (strncmp(token, "sp", 2) == 0)
 		parse_sphere(&line, scene);
