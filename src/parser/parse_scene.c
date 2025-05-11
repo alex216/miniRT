@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/08 21:38:02 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/09 21:26:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+static void	validate_scene(t_object_count *object_count)
+{
+	if (object_count->ambient > 1)
+		fatal_error("Too many ambient lights");
+	if (object_count->camera > 1)
+		fatal_error("Too many cameras");
+	if (object_count->light > MAX_LIGHTS)
+		fatal_error("Too many lights");
+}
 
 t_scene	*parse_scene(const char *filename)
 {
@@ -33,6 +43,7 @@ t_scene	*parse_scene(const char *filename)
 		if (!line)
 			break ;
 		parse_line(line, scene, &object_count);
+		validate_scene(&object_count);
 		free(line);
 	}
 	close(fd);

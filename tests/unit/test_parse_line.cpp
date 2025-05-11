@@ -211,5 +211,5 @@ TEST(ParseLineTest, UnknownIdentifier)
 	scene.objects = NULL;
 	t_object_count object_count = {0, 0, 0};
 	const char *line = "X 0,0,0";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Unknown identifier");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Unknown object type");
 }

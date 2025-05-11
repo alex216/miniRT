@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:54:47 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 17:08:51 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/11 16:41:38 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,28 @@
 # include "utils.h"
 # include <errno.h>
 
-typedef struct t_object_count
+# define MAX_LIGHTS 10
+
+typedef struct s_object_count
 {
-	unsigned int ambient;
-	unsigned int camera;
-	unsigned int light;
-}	t_object_count;
+	unsigned int	ambient;
+	unsigned int	camera;
+	unsigned int	light;
+}					t_object_count;
 
-double	parse_ratio(const char *str);
-t_rgb	parse_color(const char *str);
-t_vec3	parse_vector(const char *str);
-double	parse_positive_double(const char *str);
-double	parse_degree(const char *str);
+double				parse_ratio(const char *str);
+t_rgb				parse_color(const char *str);
+t_vec3				parse_vector(const char *str);
+double				parse_positive_double(const char *str);
+double				parse_degree(const char *str);
 
-void	parse_plane(const char **line, t_scene *scene);
-void	parse_sphere(const char **line, t_scene *scene);
-void	parse_cylinder(const char **line, t_scene *scene);
-void	parse_cone(const char **line, t_scene *scene);
+void				parse_plane(const char **line, t_scene *scene);
+void				parse_sphere(const char **line, t_scene *scene);
+void				parse_cylinder(const char **line, t_scene *scene);
+void				parse_cone(const char **line, t_scene *scene);
 
-void	parse_line(const char *line, t_scene *scene,
-			t_object_count *object_count);
-t_scene	*parse_scene(const char *filename);
+void				parse_line(const char *line, t_scene *scene,
+						t_object_count *object_count);
+t_scene				*parse_scene(const char *filename);
 
 #endif

@@ -28,13 +28,13 @@ typedef enum e_event
 	ON_MOUSEMOVE = 6,
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17,
-}	t_event;
+}			t_event;
 
 typedef enum e_mask
 {
 	NO_EVENT_MASK = 0L,
 	KEY_PRESS_MASK = 1L << 0,
-}	t_mask;
+}			t_mask;
 
 typedef struct s_mlx_conf
 {
@@ -45,7 +45,7 @@ typedef struct s_mlx_conf
 	int		line_length;
 	int		bits_per_pixel;
 	int		endian;
-}	t_mlx_conf;
+}			t_mlx_conf;
 
 t_mlx_conf	*construct_mlx_conf(void);
 void		destroy_mlx_conf(t_mlx_conf *mlx_conf);

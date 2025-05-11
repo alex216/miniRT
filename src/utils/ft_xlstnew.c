@@ -14,7 +14,7 @@
 
 t_list	*ft_xlstnew(void *content)
 {
-	t_list *new_node;
+	t_list	*new_node;
 
 	new_node = ft_lstnew(content);
 	if (!new_node)
