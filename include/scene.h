@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
+/*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/06 22:09:58 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/10 17:52:40 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ typedef struct s_scene
 	t_list			*lights;
 	t_list			*objects;
 }					t_scene;
+
+void	stub_init_scene(t_scene *scene);
 
 #endif

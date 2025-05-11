@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tracer.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/18 16:17:12 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/10 17:52:08 by reasuke          ###   ########.fr       */
+/*   Created: 2025/05/10 01:44:48 by reasuke           #+#    #+#             */
+/*   Updated: 2025/05/10 17:38:04 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_utils.h"
-#include "scene.h"
-#include "tracer.h"
+#ifndef TRACER_H
+# define TRACER_H
 
-int	main(int argc, char **argv)
+# include "mlx_utils.h"
+# include "scene.h"
+# include "vector.h"
+
+# define RAY_T_MIN 0.001
+
+typedef struct s_ray
 {
-	t_mlx_conf	*mlx_conf;
-	t_scene		scene;
+	t_vec3	origin;
+	t_vec3	direction;
+}	t_ray;
 
-	(void)argc;
-	(void)argv;
-	mlx_conf = construct_mlx_conf();
-	stub_init_scene(&scene);
-	handle_events(mlx_conf);
-	render(scene, mlx_conf);
-	mlx_loop(mlx_conf->mlx);
-	return (0);
-}
+typedef struct s_hit_record
+{
+	double	t;
+	t_vec3	point;
+	t_vec3	normal;
+	t_rgb	color;
+}	t_hit_record;
+
+void	render(t_scene scene, t_mlx_conf *mlx_conf);
+t_rgb	trace_ray(t_ray ray, t_scene scene);
+
+#endif
