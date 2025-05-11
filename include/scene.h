@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/10 21:49:27 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 00:16:39 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,12 @@ typedef struct s_scene
 	t_list			*objects;
 }					t_scene;
 
-void	stub_init_scene(t_scene *scene);
-int		stub_add_three_spheres(t_scene *scene);
-int		stub_add_lights(t_scene *scene);
+t_sphere	*construct_sphere_data(t_vec3 center, double radius, t_rgb color);
+t_plane		*construct_plane_data(t_vec3 point, t_vec3 normal, t_rgb color);
+t_object	*construct_object(t_object_type type, void *data);
+
+void		stub_init_scene(t_scene *scene);
+int			stub_add_objects(t_scene *scene);
+int			stub_add_lights(t_scene *scene);
 
 #endif
