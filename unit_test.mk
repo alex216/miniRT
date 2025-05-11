@@ -5,7 +5,7 @@ TEST_NAME			= unit_tester
 CXXFLAGS			= -std=c++17 -Wall -Wextra -Werror
 
 # Directories
-TEST_DIR			= tests/unit
+TEST_DIR			= tests/
 GTEST_DIR			= googletest
 TEST_BUILD_DIR		= build/tests
 
