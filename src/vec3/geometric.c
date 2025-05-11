@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 00:14:16 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 23:41:08 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 22:08:23 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,26 @@ t_vec3	vec3_normalize(t_vec3 a)
 	return (vec3_scale(a, 1 / len));
 }
 
+/*
+** Reflects a vector `incident` off a surface with the given `normal`.
+** Direction convention:
+**
+**           normal
+**             ^
+**  incident   |    reflected
+**      \      |      ^
+**       \     |     /
+**        \    |    /
+**         \   |   /
+**          \  |  /
+**           \ | /
+**            v|/
+** ------------------------- surface
+*/
 t_vec3	vec3_reflect(t_vec3 incident, t_vec3 normal)
 {
 	double	dot_product;
 
 	dot_product = vec3_dot(incident, normal);
-	return (vec3_sub(vec3_scale(normal, 2.0 * dot_product), incident));
+	return (vec3_sub(incident, vec3_scale(normal, 2 * dot_product)));
 }
