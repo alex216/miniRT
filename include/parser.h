@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:54:47 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 16:41:38 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/11 17:38:49 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define MAX_LIGHTS 10
 
-typedef struct s_object_count
+typedef struct t_object_count
 {
 	unsigned int	ambient;
 	unsigned int	camera;
