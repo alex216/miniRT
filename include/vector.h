@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 11:00:30 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/07 00:19:55 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 22:10:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,17 @@ t_vec3	vec3_add(t_vec3 a, t_vec3 b);
 t_vec3	vec3_sub(t_vec3 a, t_vec3 b);
 t_vec3	vec3_hadamard(t_vec3 a, t_vec3 b);
 t_vec3	vec3_scale(t_vec3 a, double s);
+t_vec3	vec3_clamp(t_vec3 a, double min, double max);
 
 // geometric.c
 double	vec3_dot(t_vec3 a, t_vec3 b);
 t_vec3	vec3_cross(t_vec3 a, t_vec3 b);
-double	vec3_length(t_vec3 a);
 t_vec3	vec3_normalize(t_vec3 a);
+t_vec3	vec3_negate(t_vec3 a);
+t_vec3	vec3_reflect(t_vec3 incident, t_vec3 normal);
+
+// metric.c
 bool	vec3_is_parallel(t_vec3 a, t_vec3 b);
+double	vec3_length(t_vec3 a);
 
 #endif
