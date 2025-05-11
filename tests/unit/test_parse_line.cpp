@@ -9,28 +9,31 @@ extern "C"
 TEST(ParseLineTest, AmbientValidInput)
 {
 	t_scene scene;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "A 0.2 255,255,255";
-	parse_line(line, &scene);
+	parse_line(line, &scene, &object_count);
 	EXPECT_DOUBLE_EQ(scene.ambient.ratio, 0.2);
 	EXPECT_EQ(scene.ambient.color.r, 255);
 	EXPECT_EQ(scene.ambient.color.g, 255);
 	EXPECT_EQ(scene.ambient.color.b, 255);
 }
 
-TEST(ParseLineErrTest, AmbientInvalidInput)
+TEST(ParseLineTest, AmbientInvalidInput)
 {
 	t_scene scene;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "A 0.2";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing ambient light color");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing ambient light color");
 	line = "A 0.2 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for ambient light");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for ambient light");
 }
 
 TEST(ParseLineTest, CameraValidInput)
 {
 	t_scene scene;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "C -50,0,20 0,0,1 70";
-	parse_line(line, &scene);
+	parse_line(line, &scene, &object_count);
 	EXPECT_DOUBLE_EQ(scene.camera.position.x, -50.0);
 	EXPECT_DOUBLE_EQ(scene.camera.position.y, 0.0);
 	EXPECT_DOUBLE_EQ(scene.camera.position.z, 20.0);
@@ -40,23 +43,25 @@ TEST(ParseLineTest, CameraValidInput)
 	EXPECT_DOUBLE_EQ(scene.camera.fov, 70.0);
 }
 
-TEST(ParseLineErrTest, CameraInvalidInput)
+TEST(ParseLineTest, CameraInvalidInput)
 {
 	t_scene scene;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "C -50,0,20 0,0,1";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing camera field of view");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing camera field of view");
 	line = "C -50,0,20";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing camera orientation");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing camera orientation");
 	line = "C -50,0,20 0,0,1 70 extra";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for camera");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for camera");
 }
 
 TEST(ParseLineTest, LightValidInput)
 {
 	t_scene scene;
 	scene.lights = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "L -40,0,30 0.7 255,255,255";
-	parse_line(line, &scene);
+	parse_line(line, &scene, &object_count);
 	t_light *light = (t_light *)scene.lights->content;
 	EXPECT_DOUBLE_EQ(light->position.x, -40.0);
 	EXPECT_DOUBLE_EQ(light->position.y, 0.0);
@@ -67,22 +72,24 @@ TEST(ParseLineTest, LightValidInput)
 	EXPECT_EQ(light->color.b, 255);
 }
 
-TEST(ParseLineErrTest, LightInvalidInput)
+TEST(ParseLineTest, LightInvalidInput)
 {
 	t_scene scene;
 	scene.lights = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "L -40,0,30 0.7";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing light color");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing light color");
 	line = "L -40,0,30 0.7 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for light");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for light");
 }
 
 TEST(ParseLineTest, PlaneValidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "pl 0,0,0 0,1,0 255,255,255";
-	parse_line(line, &scene);
+	parse_line(line, &scene, &object_count);
 	t_plane *plane = (t_plane *)scene.objects->content;
 	EXPECT_DOUBLE_EQ(plane->point.x, 0.0);
 	EXPECT_DOUBLE_EQ(plane->point.y, 0.0);
@@ -95,22 +102,24 @@ TEST(ParseLineTest, PlaneValidInput)
 	EXPECT_EQ(plane->color.b, 255);
 }
 
-TEST(ParseLineErrTest, PlaneInvalidInput)
+TEST(ParseLineTest, PlaneInvalidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "pl 0,0,0 0,1,0";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing plane color");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing plane color");
 	line = "pl 0,0,0 0,1,0 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for plane");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for plane");
 }
 
 TEST(ParseLineTest, SphereValidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "sp 0,0,0 10 255,255,255";
-	parse_line(line, &scene);
+	parse_line(line, &scene, &object_count);
 	t_sphere *sphere = (t_sphere *)scene.objects->content;
 	EXPECT_DOUBLE_EQ(sphere->center.x, 0.0);
 	EXPECT_DOUBLE_EQ(sphere->center.y, 0.0);
@@ -120,22 +129,25 @@ TEST(ParseLineTest, SphereValidInput)
 	EXPECT_EQ(sphere->color.g, 255);
 	EXPECT_EQ(sphere->color.b, 255);
 }
-TEST(ParseLineErrTest, SphereInvalidInput)
+
+TEST(ParseLineTest, SphereInvalidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "sp 0,0,0 10";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing sphere color");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing sphere color");
 	line = "sp 0,0,0 10 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for sphere");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for sphere");
 }
 
 TEST(ParseLineTest, CylinderValidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "cy 0,0,0 0,1,0 10 20 255,255,255";
-	parse_line(line, &scene);
+	parse_line(line, &scene, &object_count);
 	t_cylinder *cylinder = (t_cylinder *)scene.objects->content;
 	EXPECT_DOUBLE_EQ(cylinder->center.x, 0.0);
 	EXPECT_DOUBLE_EQ(cylinder->center.y, 0.0);
@@ -150,21 +162,24 @@ TEST(ParseLineTest, CylinderValidInput)
 	EXPECT_EQ(cylinder->color.b, 255);
 }
 
-TEST(ParseLineErrTest, CylinderInvalidInput)
+TEST(ParseLineTest, CylinderInvalidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "cy 0,0,0 0,1,0 10 20";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing cylinder color");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing cylinder color");
 	line = "cy 0,0,0 0,1,0 10 20 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for cylinder");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for cylinder");
 }
+
 TEST(ParseLineTest, ConeValidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "co 0,0,0 0,1,0 10 20 255,255,255";
-	parse_line(line, &scene);
+	parse_line(line, &scene, &object_count);
 	t_cone *cone = (t_cone *)scene.objects->content;
 	EXPECT_DOUBLE_EQ(cone->apex.x, 0.0);
 	EXPECT_DOUBLE_EQ(cone->apex.y, 0.0);
@@ -178,20 +193,23 @@ TEST(ParseLineTest, ConeValidInput)
 	EXPECT_EQ(cone->color.g, 255);
 	EXPECT_EQ(cone->color.b, 255);
 }
-TEST(ParseLineErrTest, ConeInvalidInput)
+
+TEST(ParseLineTest, ConeInvalidInput)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "co 0,0,0 0,1,0 10 20";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing cone color");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing cone color");
 	line = "co 0,0,0 0,1,0 10 20 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for cone");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for cone");
 }
 
-TEST(ParseLineErrTest, UnknownIdentifier)
+TEST(ParseLineTest, UnknownIdentifier)
 {
 	t_scene scene;
 	scene.objects = NULL;
+	t_object_count object_count = {0, 0, 0};
 	const char *line = "X 0,0,0";
-	EXPECT_EXIT(parse_line(line, &scene), ::testing::ExitedWithCode(EXIT_FAILURE), "Unknown identifier");
+	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Unknown identifier");
 }

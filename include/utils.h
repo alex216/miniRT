@@ -13,10 +13,10 @@
 #ifndef UTILS_H
 # define UTILS_H
 
-#include <stdbool.h>
-#include <unistd.h>
-#include "libft.h"
-#include "stdlib.h"
+# include "libft.h"
+# include "stdlib.h"
+# include <stdbool.h>
+# include <unistd.h>
 
 t_list	*ft_xlstnew(void *content);
 double	ft_atof(const char *str);

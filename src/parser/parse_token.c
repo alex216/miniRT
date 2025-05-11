@@ -37,8 +37,7 @@ t_rgb	parse_color(const char *str)
 	color.x = ft_strtol(result[0], NULL, 10);
 	color.y = ft_strtol(result[1], NULL, 10);
 	color.z = ft_strtol(result[2], NULL, 10);
-	if (color.x < 0 || color.x > 255
-		|| color.y < 0 || color.y > 255
+	if (color.x < 0 || color.x > 255 || color.y < 0 || color.y > 255
 		|| color.z < 0 || color.z > 255)
 		exit_with_errmsg("Color values must be in the range [0, 255]");
 	free(result);
@@ -68,9 +67,9 @@ t_vec3	parse_vector(const char *str)
 	return (vector);
 }
 
-double parse_positive_double(const char *str)
+double	parse_positive_double(const char *str)
 {
-	double value;
+	double	value;
 
 	if (!is_double(str))
 		exit_with_errmsg("Invalid format");
@@ -80,9 +79,9 @@ double parse_positive_double(const char *str)
 	return (value);
 }
 
-double parse_degree(const char *str)
+double	parse_degree(const char *str)
 {
-	double degree;
+	double	degree;
 
 	if (!is_double(str))
 		exit_with_errmsg("Invalid format");

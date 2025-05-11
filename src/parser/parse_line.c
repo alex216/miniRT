@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:39:40 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/08 18:16:54 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/08 20:59:32 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LINE_LENGTH 256
-#define MAX_TOKENS 10
+#define MAX_LIGHTS 10
 
-#include "scene.h"
 #include "parser.h"
+#include "scene.h"
 #include "utils.h"
 
 // syntax: A [ratio] [color]
@@ -94,7 +93,8 @@ static void	parse_light(const char **line, t_scene *scene)
 	ft_lstadd_back(&scene->lights, ft_xlstnew(light));
 }
 
-void	parse_line(const char *line, t_scene *scene)
+void	parse_line(const char *line, t_scene *scene,
+		t_object_count *object_count)
 {
 	char	*token;
 
@@ -102,11 +102,26 @@ void	parse_line(const char *line, t_scene *scene)
 	if (!token)
 		return ;
 	if (ft_strncmp(token, "A", 1) == 0)
+	{
 		parse_ambient(&line, scene);
+		object_count->ambient++;
+		if (object_count->ambient > 1)
+			exit_with_errmsg("Too many ambient lights");
+	}
 	else if (strncmp(token, "C", 1) == 0)
+	{
 		parse_camera(&line, scene);
+		object_count->camera++;
+		if (object_count->camera > 1)
+			exit_with_errmsg("Too many cameras");
+	}
 	else if (strncmp(token, "L", 1) == 0)
+	{
 		parse_light(&line, scene);
+		object_count->light++;
+		if (object_count->light > MAX_LIGHTS)
+			exit_with_errmsg("Too many lights");
+	}
 	else if (strncmp(token, "sp", 2) == 0)
 		parse_sphere(&line, scene);
 	else if (strncmp(token, "pl", 2) == 0)

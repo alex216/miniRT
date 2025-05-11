@@ -13,33 +13,33 @@
 #ifndef SCENE_H
 # define SCENE_H
 
-# include "objects.h"
 # include "libft.h"
+# include "objects.h"
 
-typedef double	t_degree;
+typedef double		t_degree;
 
 // ratio : 0.0 - 1.0
 typedef struct s_ambient
 {
-	t_rgb		color;
-	double		ratio;
-}				t_ambient;
+	t_rgb			color;
+	double			ratio;
+}					t_ambient;
 
 // fov : 0.0 - 180.0
 typedef struct s_camera
 {
-	t_rgb		position;
-	t_rgb		orientation;
-	t_degree	fov;
-}				t_camera;
+	t_rgb			position;
+	t_rgb			orientation;
+	t_degree		fov;
+}					t_camera;
 
 // brightness : 0.0 - 1.0
 typedef struct s_light
 {
-	t_rgb	position;
-	t_rgb	color;
-	double	brightness;
-}			t_light;
+	t_rgb			position;
+	t_rgb			color;
+	double			brightness;
+}					t_light;
 
 typedef struct s_object
 {
