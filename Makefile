@@ -44,7 +44,10 @@ SRC			=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/utils/ft_xlstnew.c \
 				$(SRC_DIR)/utils/check_type.c \
 				$(SRC_DIR)/utils/ft_atof.c \
-				$(SRC_DIR)/utils/error.c
+				$(SRC_DIR)/utils/error.c \
+				$(SRC_DIR)/vec3/arithmetic.c \
+				$(SRC_DIR)/vec3/geometric.c \
+				$(SRC_DIR)/viewport/init.c
 
 OBJ			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.o, $(SRC))
 DEP			= $(patsubst $(SRC_DIR)/%.c, $(BUILD_DIR)/%.d, $(SRC))
