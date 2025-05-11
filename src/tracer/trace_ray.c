@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 16:59:52 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 17:47:32 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/11 21:11:14 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 static bool	intersect_sphere(t_ray ray, t_sphere *sphere,
 								t_hit_record *hit_record)
 {
-	const t_vec3	oc = vec3_sub(ray.origin, sphere->center);
+	const t_vec3	co = vec3_sub(ray.origin, sphere->center);
 	const double	a = vec3_dot(ray.direction, ray.direction);
-	const double	half_b = vec3_dot(oc, ray.direction);
-	const double	c = vec3_dot(oc, oc) - sphere->radius * sphere->radius;
+	const double	half_b = vec3_dot(co, ray.direction);
+	const double	c = vec3_dot(co, co) - sphere->radius * sphere->radius;
 	double			root;
 
 	if (half_b * half_b - a * c < 0)
