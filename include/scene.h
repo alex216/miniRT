@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 00:16:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:33:29 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,6 @@ void		stub_init_scene(t_scene *scene);
 int			stub_add_objects(t_scene *scene);
 int			stub_add_lights(t_scene *scene);
 
+enum e_object_type	get_object_type(t_list *object);
+void				*get_object_data(t_list *object);
 #endif
