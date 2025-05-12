@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:40:10 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:45:43 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 16:36:04 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,43 @@ char	*next_token(const char **head, int is_delimiter(int c))
 	return (word);
 }
 
-bool	is_three_integer(const char *str)
+static bool	validate_comma_format(const char *str, int *comma_count)
 {
 	int	i;
-	int	comma_count;
 
 	i = 0;
-	comma_count = 0;
+	*comma_count = 0;
 	while (str[i])
 	{
 		if (str[i] == ',')
 		{
-			if (i == 0 || str[i - 1] == ',' || str[i + 1] == ',' || str[i + 1] == '\0')
+			if (i == 0
+				|| str[i - 1] == ','
+				|| str[i + 1] == ','
+				|| str[i + 1] == '\0')
 				return (false);
-			comma_count++;
+			(*comma_count)++;
 		}
-		else if (!ft_isdigit(str[i]))
-			return (false);
 		i++;
 	}
-	return (comma_count == 2);
+	return (true);
+}
+
+bool	is_three_integer(const char *str)
+{
+	int	comma_count;
+
+	if (!validate_comma_format(str, &comma_count))
+		return (false);
+	if (comma_count != 2)
+		return (false);
+	while (*str)
+	{
+		if (*str != ',' && !ft_isdigit(*str))
+			return (false);
+		str++;
+	}
+	return (true);
 }
 
 bool	is_double(const char *str)
@@ -77,22 +94,12 @@ bool	is_double(const char *str)
 
 bool	is_vec3(const char *str)
 {
-	int		i;
 	int		comma_count;
 	char	**result;
 
-	i = 0;
 	comma_count = 0;
-	while (str[i])
-	{
-		if (str[i] == ',')
-		{
-			if (i == 0 || str[i - 1] == ',' || str[i + 1] == ',' || str[i + 1] == '\0')
-				return (false);
-			comma_count++;
-		}
-		i++;
-	}
+	if (!validate_comma_format(str, &comma_count))
+		return (false);
 	if (comma_count != 2)
 		return (false);
 	result = ft_split(str, ',');
