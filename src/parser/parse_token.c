@@ -68,6 +68,11 @@ static t_vec3	parse_vector_internal(const char *str, const double min,
 	return (vector);
 }
 
+t_vec3	parse_vector_direction(const char *str)
+{
+	return (parse_vector_internal(str, -1.0, 1.0));
+}
+
 t_vec3	parse_vector_position(const char *str)
 {
 	return (parse_vector_internal(str, -INFINITY, INFINITY));

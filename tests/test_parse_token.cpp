@@ -77,6 +77,11 @@ TEST(ParseVectorErrTest, InvalidInput)
 	EXPECT_EXIT(parse_vector_position("1.0,2.0,3.0,4.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid vector");
 }
 
+TEST(ParseVectorDirectionErrTest, InvalidInput)
+{
+	EXPECT_EXIT(parse_vector_direction("1.0,2.0,3.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Vector value out of range");
+}
+
 TEST(ParsePositiveDoubleTest, ValidInput)
 {
 	EXPECT_DOUBLE_EQ(parse_positive_double("1.0"), 1.0);

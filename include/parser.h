@@ -30,6 +30,7 @@ typedef struct t_object_count
 double				parse_ratio(const char *str);
 t_rgb				parse_color(const char *str);
 t_vec3				parse_vector_position(const char *str);
+t_vec3				parse_vector_direction(const char *str);
 double				parse_positive_double(const char *str);
 double				parse_degree(const char *str);
 
