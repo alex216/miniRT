@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 15:14:01 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/09 21:08:18 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:07:48 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	parse_cylinder_position(const char **line, t_cylinder *cylinder)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing cylinder position");
-	cylinder->center = parse_vector(token);
+	cylinder->center = parse_vector_position(token);
 	free(token);
 }
 
@@ -30,7 +30,7 @@ static void	parse_cylinder_orientation(const char **line, t_cylinder *cylinder)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing cylinder orientation");
-	cylinder->axis = parse_vector(token);
+	cylinder->axis = parse_vector_position(token);
 	free(token);
 }
 

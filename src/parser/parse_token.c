@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 10:12:37 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 17:09:02 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:07:48 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_rgb	parse_color(const char *str)
 	return (color);
 }
 
-t_vec3	parse_vector(const char *str)
+static t_vec3	parse_vector_internal(const char *str, const double min,
+		const double max)
 {
 	t_vec3	vector;
 	char	**result;
@@ -55,16 +56,21 @@ t_vec3	parse_vector(const char *str)
 	if (!result)
 		fatal_error("Memory allocation failed");
 	vector.x = ft_atof(result[0]);
-	if (errno == ERANGE)
+	if (errno == ERANGE || vector.x < min || vector.x > max)
 		fatal_error("Vector value out of range");
 	vector.y = ft_atof(result[1]);
-	if (errno == ERANGE)
+	if (errno == ERANGE || vector.y < min || vector.y > max)
 		fatal_error("Vector value out of range");
 	vector.z = ft_atof(result[2]);
-	if (errno == ERANGE)
+	if (errno == ERANGE || vector.z < min || vector.z > max)
 		fatal_error("Vector value out of range");
 	free(result);
 	return (vector);
+}
+
+t_vec3	parse_vector_position(const char *str)
+{
+	return (parse_vector_internal(str, -INFINITY, INFINITY));
 }
 
 double	parse_positive_double(const char *str)

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:54:47 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 17:38:49 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:08:03 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "scene.h"
 # include "utils.h"
 # include <errno.h>
+# include <math.h>
 
 # define MAX_LIGHTS 10
 
@@ -28,7 +29,7 @@ typedef struct t_object_count
 
 double				parse_ratio(const char *str);
 t_rgb				parse_color(const char *str);
-t_vec3				parse_vector(const char *str);
+t_vec3				parse_vector_position(const char *str);
 double				parse_positive_double(const char *str);
 double				parse_degree(const char *str);
 

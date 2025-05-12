@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:03:52 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 17:09:02 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:07:48 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	parse_plane(const char **line, t_scene *scene)
 	if (!token)
 		fatal_error("Missing plane position");
 	plane = ft_xmalloc(sizeof(t_plane));
-	plane->point = parse_vector(token);
+	plane->point = parse_vector_position(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing plane normal");
-	plane->normal = parse_vector(token);
+	plane->normal = parse_vector_position(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
@@ -50,7 +50,7 @@ void	parse_sphere(const char **line, t_scene *scene)
 	if (!token)
 		fatal_error("Missing sphere position");
 	sphere = ft_xmalloc(sizeof(t_sphere));
-	sphere->center = parse_vector(token);
+	sphere->center = parse_vector_position(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)

@@ -55,17 +55,17 @@ TEST(ParseColorErrTEST, InvalidInput)
 
 TEST(ParseVectorTest, ValidInput)
 {
-	t_vec3 vector = parse_vector("1.0,2.0,3.0");
+	t_vec3 vector = parse_vector_position("1.0,2.0,3.0");
 	EXPECT_DOUBLE_EQ(vector.x, 1.0);
 	EXPECT_DOUBLE_EQ(vector.y, 2.0);
 	EXPECT_DOUBLE_EQ(vector.z, 3.0);
 
-	vector = parse_vector("0.0,0.0,0.0");
+	vector = parse_vector_position("0.0,0.0,0.0");
 	EXPECT_DOUBLE_EQ(vector.x, 0.0);
 	EXPECT_DOUBLE_EQ(vector.y, 0.0);
 	EXPECT_DOUBLE_EQ(vector.z, 0.0);
 
-	vector = parse_vector("-1.5,-2.5,-3.5");
+	vector = parse_vector_position("-1.5,-2.5,-3.5");
 	EXPECT_DOUBLE_EQ(vector.x, -1.5);
 	EXPECT_DOUBLE_EQ(vector.y, -2.5);
 	EXPECT_DOUBLE_EQ(vector.z, -3.5);
@@ -73,8 +73,8 @@ TEST(ParseVectorTest, ValidInput)
 
 TEST(ParseVectorErrTest, InvalidInput)
 {
-	EXPECT_EXIT(parse_vector("1.0,2.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid vector");
-	EXPECT_EXIT(parse_vector("1.0,2.0,3.0,4.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid vector");
+	EXPECT_EXIT(parse_vector_position("1.0,2.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid vector");
+	EXPECT_EXIT(parse_vector_position("1.0,2.0,3.0,4.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid vector");
 }
 
 TEST(ParsePositiveDoubleTest, ValidInput)
