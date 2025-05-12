@@ -30,7 +30,8 @@ LIBMLX_DIR	= libmlx
 
 # files
 SRC			=	$(SRC_DIR)/main.c \
-				$(SRC_DIR)/parser/parse_token.c \
+				$(SRC_DIR)/parser/parse_token_scalar.c \
+				$(SRC_DIR)/parser/parse_token_vector.c \
 				$(SRC_DIR)/parser/parse_line.c \
 				$(SRC_DIR)/parser/parse_scene.c \
 				$(SRC_DIR)/parser/parse_obj_cone.c \

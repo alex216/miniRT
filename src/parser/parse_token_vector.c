@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_token.c                                      :+:      :+:    :+:   */
+/*   parse_token_vector.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 10:12:37 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:07:48 by yliu             ###   ########.fr       */
+/*   Created: 2025/05/12 16:13:55 by yliu              #+#    #+#             */
+/*   Updated: 2025/05/12 16:14:39 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-
-double	parse_ratio(const char *str)
-{
-	double	ratio;
-
-	if (!is_double(str))
-		fatal_error("Invalid format");
-	ratio = ft_atof(str);
-	if (ratio < 0.0 || ratio > 1.0)
-		fatal_error("Invalid ratio value");
-	return (ratio);
-}
 
 t_rgb	parse_color(const char *str)
 {
@@ -76,28 +64,4 @@ t_vec3	parse_vector_direction(const char *str)
 t_vec3	parse_vector_position(const char *str)
 {
 	return (parse_vector_internal(str, -INFINITY, INFINITY));
-}
-
-double	parse_positive_double(const char *str)
-{
-	double	value;
-
-	if (!is_double(str))
-		fatal_error("Invalid format");
-	value = ft_atof(str);
-	if (value <= 0.0)
-		fatal_error("Value must be positive");
-	return (value);
-}
-
-double	parse_degree(const char *str)
-{
-	double	degree;
-
-	if (!is_double(str))
-		fatal_error("Invalid format");
-	degree = ft_atof(str);
-	if (degree < 0.0 || degree > 180.0)
-		fatal_error("Degree must be in the range [0, 180]");
-	return (degree);
 }
