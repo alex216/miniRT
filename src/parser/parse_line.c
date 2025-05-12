@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:39:40 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:15:59 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 16:38:30 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	parse_light(const char **line, t_scene *scene)
 	ft_lstadd_back(&scene->lights, ft_xlstnew(light));
 }
 
-void	parse_objects(const char *token, const char *line, t_scene *scene)
+static void	parse_objects(const char *token, const char *line, t_scene *scene)
 {
 	if (ft_strcmp(token, "sp") == 0)
 		parse_sphere(&line, scene);
