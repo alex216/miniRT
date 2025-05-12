@@ -42,7 +42,6 @@ SRC			=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/mlx_utils/handle_events.c \
 				$(SRC_DIR)/mlx_utils/plot_pixel.c \
 				$(SRC_DIR)/utils/ft_xlstnew.c \
-				$(SRC_DIR)/utils/check_type.c \
 				$(SRC_DIR)/utils/ft_atof.c \
 				$(SRC_DIR)/scene/constructor.c \
 				$(SRC_DIR)/scene/stub_init_scene.c \

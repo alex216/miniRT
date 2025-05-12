@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:54:47 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:08:03 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:46:02 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ typedef struct t_object_count
 	unsigned int	camera;
 	unsigned int	light;
 }					t_object_count;
+
+bool				is_three_integer(const char *str);
+bool				is_double(const char *str);
+bool				is_vec3(const char *str);
 
 double				parse_ratio(const char *str);
 t_rgb				parse_color(const char *str);
