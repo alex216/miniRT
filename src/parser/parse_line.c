@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:39:40 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:07:48 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:15:59 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	parse_camera(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing camera orientation");
-	scene->camera.orientation = parse_vector_position(token);
+	scene->camera.orientation = parse_vector_direction(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)

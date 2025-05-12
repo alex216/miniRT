@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:03:52 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:07:48 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:21:51 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	parse_plane(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing plane normal");
-	plane->normal = parse_vector_position(token);
+	plane->normal = parse_vector_direction(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)

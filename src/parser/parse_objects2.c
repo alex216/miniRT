@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:24:46 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:07:48 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:27:06 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	parse_cone_position_orientation(const char **line, t_cone *cone)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing cone orientation");
-	cone->axis = parse_vector_position(token);
+	cone->axis = parse_vector_direction(token);
 	free(token);
 }
 
