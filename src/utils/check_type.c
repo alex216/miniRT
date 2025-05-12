@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 16:30:08 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 17:09:02 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/12 15:40:42 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ bool	is_three_integer(const char *str)
 	while (str[i])
 	{
 		if (str[i] == ',')
+		{
+			if (i == 0 || str[i - 1] == ',' || str[i + 1] == ',' || str[i + 1] == '\0')
+				return (false);
 			comma_count++;
+		}
 		else if (!ft_isdigit(str[i]))
 			return (false);
 		i++;
@@ -61,7 +65,11 @@ bool	is_vec3(const char *str)
 	while (str[i])
 	{
 		if (str[i] == ',')
+		{
+			if (i == 0 || str[i - 1] == ',' || str[i + 1] == ',' || str[i + 1] == '\0')
+				return (false);
 			comma_count++;
+		}
 		i++;
 	}
 	if (comma_count != 2)

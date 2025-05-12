@@ -146,3 +146,31 @@ TEST(FT_ATOF_TEST, CompareWithOriginalATOF_LargeNumbers)
 // 	double result = ft_atof(str);
 // 	EXPECT_DOUBLE_EQ(result, expected);
 // }
+
+TEST(IS_THREE_INTEGER_TEST, IsThreeInteger)
+{
+	EXPECT_TRUE(is_three_integer("123,456,789"));
+	EXPECT_FALSE(is_three_integer("123,456"));
+	EXPECT_FALSE(is_three_integer("123,,456"));
+	EXPECT_FALSE(is_three_integer("123,,456,"));
+	EXPECT_FALSE(is_three_integer(",,456,"));
+	EXPECT_FALSE(is_three_integer("123,456,789,0"));
+	EXPECT_FALSE(is_three_integer("123.456,789"));
+	EXPECT_FALSE(is_three_integer("abc,def,ghi"));
+	EXPECT_FALSE(is_three_integer("123,456abc789"));
+	EXPECT_FALSE(is_three_integer("123456789"));
+}
+
+TEST(IS_VEC3_TEST, IsVec3)
+{
+	EXPECT_TRUE(is_vec3("1.0,2.0,3.0"));
+	EXPECT_FALSE(is_vec3("1.0,2.0,3.0,4.0"));
+	EXPECT_FALSE(is_vec3("1.0,2.0"));
+	EXPECT_FALSE(is_vec3("1.0,,3.0"));
+	EXPECT_FALSE(is_vec3("1.0,,3.0,4.0"));
+	EXPECT_FALSE(is_vec3(",,2.0,3.0"));
+	EXPECT_FALSE(is_vec3("1.0,2.03"));
+	EXPECT_FALSE(is_vec3("abc,def,ghi"));
+	EXPECT_FALSE(is_vec3("1.0,2abc,3.0"));
+	EXPECT_FALSE(is_vec3("123456789"));
+}
