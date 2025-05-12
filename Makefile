@@ -35,7 +35,7 @@ SRC			=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/parser/parse_scene.c \
 				$(SRC_DIR)/parser/parse_objects.c \
 				$(SRC_DIR)/parser/parse_obj_cone.c \
-				$(SRC_DIR)/parser/parse_objects3.c \
+				$(SRC_DIR)/parser/parse_obj_cylinder.c \
 				$(SRC_DIR)/parser/utils.c \
 				$(SRC_DIR)/mlx_utils/constructor.c \
 				$(SRC_DIR)/mlx_utils/destructor.c \
