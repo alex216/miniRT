@@ -115,4 +115,8 @@ re: fclean all
 norm:
 	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
 
+.PHONY: qnorm
+qnorm:
+	norminette $(INC_)DIR) $(SRC_DIR) $(LIBFT_DIR) | grep -v 'OK'
+
 include unit_test.mk
