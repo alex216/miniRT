@@ -65,7 +65,7 @@ static void	parse_cylinder_color(const char **line, t_cylinder *cylinder)
 void	parse_cylinder(const char **line, t_scene *scene)
 {
 	t_cylinder	*cylinder;
-	t_object *object;
+	t_object	*object;
 
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)

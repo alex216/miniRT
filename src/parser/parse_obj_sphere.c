@@ -6,18 +6,27 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:51:42 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/13 15:28:34 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/13 22:09:01 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+static t_object	*create_sphere_obj(t_sphere *sphere)
+{
+	t_object	*object;
+
+	object = ft_xmalloc(sizeof(t_object));
+	object->type = SPHERE;
+	object->data = sphere;
+	return (object);
+}
 
 // syntax: sp [center] [diameter] [color]
 void	parse_sphere(const char **line, t_scene *scene)
 {
 	char		*token;
 	t_sphere	*sphere;
-	t_object	*object;
 
 	token = next_token(line, ft_isspace);
 	if (!token)
@@ -38,8 +47,5 @@ void	parse_sphere(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (token)
 		fatal_error("Too many arguments for sphere");
-	object = ft_xmalloc(sizeof(t_object));
-	object->type = SPHERE;
-	object->data = sphere;
-	ft_lstadd_back(&scene->objects, ft_lstnew(object));
+	ft_lstadd_back(&scene->objects, ft_lstnew(create_sphere_obj(sphere)));
 }

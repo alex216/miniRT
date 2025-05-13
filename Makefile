@@ -46,7 +46,8 @@ SRC			=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/utils/ft_xlstnew.c \
 				$(SRC_DIR)/utils/ft_atof.c \
 				$(SRC_DIR)/scene/constructor.c \
-				$(SRC_DIR)/scene/getter.c \
+				$(SRC_DIR)/scene/getter_data.c \
+				$(SRC_DIR)/scene/getter_type.c \
 				$(SRC_DIR)/scene/stub_init_scene.c \
 				$(SRC_DIR)/scene/stub_add_objects.c \
 				$(SRC_DIR)/scene/stub_lighting.c \

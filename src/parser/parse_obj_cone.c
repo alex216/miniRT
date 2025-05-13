@@ -52,7 +52,7 @@ static void	parse_cone_dimensions_color(const char **line, t_cone *cone)
 // syntax: co [center] [axis] [diameter] [height] [color]
 void	parse_cone(const char **line, t_scene *scene)
 {
-	t_cone	*cone;
+	t_cone		*cone;
 	t_object	*object;
 
 	cone = malloc(sizeof(t_cone));
