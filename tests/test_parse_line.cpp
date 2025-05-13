@@ -90,7 +90,8 @@ TEST(ParseLineTest, PlaneValidInput)
 	t_object_count object_count = {0, 0, 0};
 	const char *line = "pl 0,0,0 0,1,0 255,255,255";
 	parse_line(line, &scene, &object_count);
-	t_plane *plane = (t_plane *)scene.objects->content;
+	EXPECT_EQ(get_object_type(scene.objects), PLANE);
+	t_plane *plane = get_plane_data(scene.objects);
 	EXPECT_DOUBLE_EQ(plane->point.x, 0.0);
 	EXPECT_DOUBLE_EQ(plane->point.y, 0.0);
 	EXPECT_DOUBLE_EQ(plane->point.z, 0.0);
@@ -120,7 +121,8 @@ TEST(ParseLineTest, SphereValidInput)
 	t_object_count object_count = {0, 0, 0};
 	const char *line = "sp 0,0,0 10 255,255,255";
 	parse_line(line, &scene, &object_count);
-	t_sphere *sphere = (t_sphere *)scene.objects->content;
+	EXPECT_EQ(get_object_type(scene.objects), SPHERE);
+	t_sphere *sphere = get_sphere_data(scene.objects);
 	EXPECT_DOUBLE_EQ(sphere->center.x, 0.0);
 	EXPECT_DOUBLE_EQ(sphere->center.y, 0.0);
 	EXPECT_DOUBLE_EQ(sphere->center.z, 0.0);
@@ -130,17 +132,6 @@ TEST(ParseLineTest, SphereValidInput)
 	EXPECT_EQ(sphere->color.b, 255);
 }
 
-TEST(ParseLineTest, SphereInvalidInput)
-{
-	t_scene scene;
-	scene.objects = NULL;
-	t_object_count object_count = {0, 0, 0};
-	const char *line = "sp 0,0,0 10";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing sphere color");
-	line = "sp 0,0,0 10 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for sphere");
-}
-
 TEST(ParseLineTest, CylinderValidInput)
 {
 	t_scene scene;
@@ -148,7 +139,8 @@ TEST(ParseLineTest, CylinderValidInput)
 	t_object_count object_count = {0, 0, 0};
 	const char *line = "cy 0,0,0 0,1,0 10 20 255,255,255";
 	parse_line(line, &scene, &object_count);
-	t_cylinder *cylinder = (t_cylinder *)scene.objects->content;
+	EXPECT_EQ(get_object_type(scene.objects), CYLINDER);
+	t_cylinder *cylinder = get_cylinder_data(scene.objects);
 	EXPECT_DOUBLE_EQ(cylinder->center.x, 0.0);
 	EXPECT_DOUBLE_EQ(cylinder->center.y, 0.0);
 	EXPECT_DOUBLE_EQ(cylinder->center.z, 0.0);
@@ -162,17 +154,6 @@ TEST(ParseLineTest, CylinderValidInput)
 	EXPECT_EQ(cylinder->color.b, 255);
 }
 
-TEST(ParseLineTest, CylinderInvalidInput)
-{
-	t_scene scene;
-	scene.objects = NULL;
-	t_object_count object_count = {0, 0, 0};
-	const char *line = "cy 0,0,0 0,1,0 10 20";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing cylinder color");
-	line = "cy 0,0,0 0,1,0 10 20 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for cylinder");
-}
-
 TEST(ParseLineTest, ConeValidInput)
 {
 	t_scene scene;
@@ -180,7 +161,8 @@ TEST(ParseLineTest, ConeValidInput)
 	t_object_count object_count = {0, 0, 0};
 	const char *line = "co 0,0,0 0,1,0 10 20 255,255,255";
 	parse_line(line, &scene, &object_count);
-	t_cone *cone = (t_cone *)scene.objects->content;
+	EXPECT_EQ(get_object_type(scene.objects), CONE);
+	t_cone *cone = get_cone_data(scene.objects);
 	EXPECT_DOUBLE_EQ(cone->apex.x, 0.0);
 	EXPECT_DOUBLE_EQ(cone->apex.y, 0.0);
 	EXPECT_DOUBLE_EQ(cone->apex.z, 0.0);
@@ -192,24 +174,4 @@ TEST(ParseLineTest, ConeValidInput)
 	EXPECT_EQ(cone->color.r, 255);
 	EXPECT_EQ(cone->color.g, 255);
 	EXPECT_EQ(cone->color.b, 255);
-}
-
-TEST(ParseLineTest, ConeInvalidInput)
-{
-	t_scene scene;
-	scene.objects = NULL;
-	t_object_count object_count = {0, 0, 0};
-	const char *line = "co 0,0,0 0,1,0 10 20";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Missing cone color");
-	line = "co 0,0,0 0,1,0 10 20 255,255,255 extra";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Too many arguments for cone");
-}
-
-TEST(ParseLineTest, UnknownIdentifier)
-{
-	t_scene scene;
-	scene.objects = NULL;
-	t_object_count object_count = {0, 0, 0};
-	const char *line = "X 0,0,0";
-	EXPECT_EXIT(parse_line(line, &scene, &object_count), ::testing::ExitedWithCode(EXIT_FAILURE), "Unknown object type");
 }

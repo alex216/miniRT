@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_sphere.c                                     :+:      :+:    :+:   */
+/*   parse_obj_sphere.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:51:42 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:51:51 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/13 15:28:34 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	parse_sphere(const char **line, t_scene *scene)
 {
 	char		*token;
 	t_sphere	*sphere;
+	t_object	*object;
 
 	token = next_token(line, ft_isspace);
 	if (!token)
@@ -37,5 +38,8 @@ void	parse_sphere(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (token)
 		fatal_error("Too many arguments for sphere");
-	ft_lstadd_back(&scene->objects, ft_xlstnew(sphere));
+	object = ft_xmalloc(sizeof(t_object));
+	object->type = SPHERE;
+	object->data = sphere;
+	ft_lstadd_back(&scene->objects, ft_lstnew(object));
 }

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 18:33:29 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/13 14:34:56 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,8 @@ int			stub_add_lights(t_scene *scene);
 
 enum e_object_type	get_object_type(t_list *object);
 void				*get_object_data(t_list *object);
+t_plane				*get_plane_data(t_list *object);
+t_sphere			*get_sphere_data(t_list *object);
+t_cylinder			*get_cylinder_data(t_list *object);
+t_cone				*get_cone_data(t_list *object);
 #endif

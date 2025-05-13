@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:24:46 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 16:38:35 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/13 21:51:19 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	parse_cone_dimensions_color(const char **line, t_cone *cone)
 void	parse_cone(const char **line, t_scene *scene)
 {
 	t_cone	*cone;
+	t_object	*object;
 
 	cone = malloc(sizeof(t_cone));
 	if (!cone)
@@ -61,5 +62,8 @@ void	parse_cone(const char **line, t_scene *scene)
 	parse_cone_dimensions_color(line, cone);
 	if (next_token(line, ft_isspace))
 		fatal_error("Too many arguments for cone");
-	ft_lstadd_back(&scene->objects, ft_xlstnew(cone));
+	object = ft_xmalloc(sizeof(t_object));
+	object->type = CONE;
+	object->data = cone;
+	ft_lstadd_back(&scene->objects, ft_xlstnew(object));
 }

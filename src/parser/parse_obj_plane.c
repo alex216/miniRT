@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:03:52 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 16:38:43 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/13 15:04:41 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 // syntax: sp [point] [normal] [color]
 void	parse_plane(const char **line, t_scene *scene)
 {
-	char	*token;
-	t_plane	*plane;
+	char		*token;
+	t_plane		*plane;
+	t_object	*object;
 
 	token = next_token(line, ft_isspace);
 	if (!token)
@@ -37,5 +38,8 @@ void	parse_plane(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (token)
 		fatal_error("Too many arguments for plane");
-	ft_lstadd_back(&scene->objects, ft_xlstnew(plane));
+	object = ft_xmalloc(sizeof(t_object));
+	object->type = PLANE;
+	object->data = plane;
+	ft_lstadd_back(&scene->objects, ft_xlstnew(object));
 }

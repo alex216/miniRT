@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 15:14:01 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 16:38:40 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/13 21:40:18 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ static void	parse_cylinder_color(const char **line, t_cylinder *cylinder)
 void	parse_cylinder(const char **line, t_scene *scene)
 {
 	t_cylinder	*cylinder;
+	t_object *object;
 
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
@@ -75,5 +76,8 @@ void	parse_cylinder(const char **line, t_scene *scene)
 	parse_cylinder_color(line, cylinder);
 	if (next_token(line, ft_isspace))
 		fatal_error("Too many arguments for cylinder");
-	ft_lstadd_back(&scene->objects, ft_xlstnew(cylinder));
+	object = ft_xmalloc(sizeof(t_object));
+	object->type = CYLINDER;
+	object->data = cylinder;
+	ft_lstadd_back(&scene->objects, ft_xlstnew(object));
 }
