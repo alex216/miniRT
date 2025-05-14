@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:54:47 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/14 15:14:09 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:47:57 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ bool				is_double(const char *str);
 bool				is_vec3(const char *str);
 
 double				parse_ratio(const char *str);
+double				parse_brightness(const char *str);
 t_rgb				parse_color(const char *str);
 t_vec3				parse_vector_position(const char *str);
 t_vec3				parse_vector_direction(const char *str);

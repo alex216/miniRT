@@ -118,9 +118,9 @@ TEST(ParsePositiveDoubleTest, ValidInput)
 
 TEST(ParsePositiveDoubleErrTest, InvalidInput)
 {
-	EXPECT_EXIT(parse_positive_double("-1.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Value must be positive");
-	EXPECT_EXIT(parse_positive_double("-0.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Value must be positive");
-	EXPECT_EXIT(parse_positive_double("+0.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Value must be positive");
+	EXPECT_EXIT(parse_positive_double("-1.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid positive value");
+	EXPECT_EXIT(parse_positive_double("-0.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid positive value");
+	EXPECT_EXIT(parse_positive_double("+0.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid positive value");
 }
 
 TEST(ParseDegreeTest, ValidInput)
@@ -132,6 +132,6 @@ TEST(ParseDegreeTest, ValidInput)
 
 TEST(ParseDegreeErrTest, InvalidInput)
 {
-	EXPECT_EXIT(parse_degree("190.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Degree must be in the range \\[0, 180\\]");
-	EXPECT_EXIT(parse_degree("-10.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Degree must be in the range \\[0, 180\\]");
+	EXPECT_EXIT(parse_degree("190.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid degree value");
+	EXPECT_EXIT(parse_degree("-10.0"), ::testing::ExitedWithCode(EXIT_FAILURE), "Invalid degree value");
 }

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 13:39:40 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/14 15:31:49 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:47:39 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void	parse_light(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing light brightness");
-	light->brightness = parse_positive_double(token);
+	light->brightness = parse_brightness(token);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (!token)
