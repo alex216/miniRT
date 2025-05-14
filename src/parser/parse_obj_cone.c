@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:24:46 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/13 21:51:19 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:31:55 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	parse_cone_dimensions_color(const char **line, t_cone *cone)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing cone color");
-	cone->color = parse_color(token);
+	cone->color = vec3_scale(parse_color(token), 1.0 / 255.0);
 	free(token);
 }
 

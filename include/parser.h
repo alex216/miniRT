@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 22:54:47 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 15:46:02 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:14:09 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void				parse_cone(const char **line, t_scene *scene);
 
 void				parse_line(const char *line, t_scene *scene,
 						t_object_count *object_count);
-t_scene				*parse_scene(const char *filename);
+void				parse_scene(t_scene *scene, const char *filename);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 15:14:01 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/13 21:40:18 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:31:32 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	parse_cylinder_color(const char **line, t_cylinder *cylinder)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing cylinder color");
-	cylinder->color = parse_color(token);
+	cylinder->color = vec3_scale(parse_color(token), 1.0 / 255.0);
 	free(token);
 }
 

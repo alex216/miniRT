@@ -13,9 +13,9 @@ TEST(ParseLineTest, AmbientValidInput)
 	const char *line = "A 0.2 255,255,255";
 	parse_line(line, &scene, &object_count);
 	EXPECT_DOUBLE_EQ(scene.ambient.ratio, 0.2);
-	EXPECT_EQ(scene.ambient.color.r, 255);
-	EXPECT_EQ(scene.ambient.color.g, 255);
-	EXPECT_EQ(scene.ambient.color.b, 255);
+	EXPECT_EQ(scene.ambient.color.r, 1);
+	EXPECT_EQ(scene.ambient.color.g, 1);
+	EXPECT_EQ(scene.ambient.color.b, 1);
 }
 
 TEST(ParseLineTest, AmbientInvalidInput)
@@ -67,9 +67,9 @@ TEST(ParseLineTest, LightValidInput)
 	EXPECT_DOUBLE_EQ(light->position.y, 0.0);
 	EXPECT_DOUBLE_EQ(light->position.z, 30.0);
 	EXPECT_DOUBLE_EQ(light->brightness, 0.7);
-	EXPECT_EQ(light->color.r, 255);
-	EXPECT_EQ(light->color.g, 255);
-	EXPECT_EQ(light->color.b, 255);
+	EXPECT_EQ(light->color.r, 1);
+	EXPECT_EQ(light->color.g, 1);
+	EXPECT_EQ(light->color.b, 1);
 }
 
 TEST(ParseLineTest, LightInvalidInput)
@@ -98,9 +98,9 @@ TEST(ParseLineTest, PlaneValidInput)
 	EXPECT_DOUBLE_EQ(plane->normal.x, 0.0);
 	EXPECT_DOUBLE_EQ(plane->normal.y, 1.0);
 	EXPECT_DOUBLE_EQ(plane->normal.z, 0.0);
-	EXPECT_EQ(plane->color.r, 255);
-	EXPECT_EQ(plane->color.g, 255);
-	EXPECT_EQ(plane->color.b, 255);
+	EXPECT_EQ(plane->color.r, 1);
+	EXPECT_EQ(plane->color.g, 1);
+	EXPECT_EQ(plane->color.b, 1);
 }
 
 TEST(ParseLineTest, PlaneInvalidInput)
@@ -127,9 +127,9 @@ TEST(ParseLineTest, SphereValidInput)
 	EXPECT_DOUBLE_EQ(sphere->center.y, 0.0);
 	EXPECT_DOUBLE_EQ(sphere->center.z, 0.0);
 	EXPECT_DOUBLE_EQ(sphere->radius, 5.0);
-	EXPECT_EQ(sphere->color.r, 255);
-	EXPECT_EQ(sphere->color.g, 255);
-	EXPECT_EQ(sphere->color.b, 255);
+	EXPECT_EQ(sphere->color.r, 1);
+	EXPECT_EQ(sphere->color.g, 1);
+	EXPECT_EQ(sphere->color.b, 1);
 }
 
 TEST(ParseLineTest, CylinderValidInput)
@@ -149,9 +149,9 @@ TEST(ParseLineTest, CylinderValidInput)
 	EXPECT_DOUBLE_EQ(cylinder->axis.z, 0.0);
 	EXPECT_DOUBLE_EQ(cylinder->radius, 5.0);
 	EXPECT_DOUBLE_EQ(cylinder->height, 20.0);
-	EXPECT_EQ(cylinder->color.r, 255);
-	EXPECT_EQ(cylinder->color.g, 255);
-	EXPECT_EQ(cylinder->color.b, 255);
+	EXPECT_EQ(cylinder->color.r, 1);
+	EXPECT_EQ(cylinder->color.g, 1);
+	EXPECT_EQ(cylinder->color.b, 1);
 }
 
 TEST(ParseLineTest, ConeValidInput)
@@ -171,7 +171,7 @@ TEST(ParseLineTest, ConeValidInput)
 	EXPECT_DOUBLE_EQ(cone->axis.z, 0.0);
 	EXPECT_DOUBLE_EQ(cone->radius, 5.0);
 	EXPECT_DOUBLE_EQ(cone->height, 20.0);
-	EXPECT_EQ(cone->color.r, 255);
-	EXPECT_EQ(cone->color.g, 255);
-	EXPECT_EQ(cone->color.b, 255);
+	EXPECT_EQ(cone->color.r, 1);
+	EXPECT_EQ(cone->color.g, 1);
+	EXPECT_EQ(cone->color.b, 1);
 }

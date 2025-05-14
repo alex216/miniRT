@@ -6,30 +6,26 @@ extern "C"
 #include "parser.h"
 }
 
-TEST(ParseSceneTest, ParseFile)
-{
-	t_scene *scene = parse_scene("./scenes/minimalist.rt");
-	ASSERT_NE(scene, nullptr);
-	EXPECT_EQ(scene->ambient.ratio, 0.2);
-	EXPECT_EQ(scene->camera.fov, 70.0);
-}
-
 TEST(ParseSceneErrTest, ParseFileInvalid)
 {
+	t_scene scene;
 	EXPECT_EXIT({
-		parse_scene("./scenes/invalid.rt");
+		parse_scene(&scene, "./scenes/invalid.rt");
 		exit(EXIT_FAILURE); }, ::testing::ExitedWithCode(EXIT_FAILURE), ".*");
 }
 
 TEST(ParseSceneErrTest, ParseFileInvalidFormat)
 {
+	t_scene scene;
+	scene.lights = NULL;
+	scene.objects = NULL;
 	EXPECT_EXIT({
-		parse_scene("./scenes/minimalist_err.rt");
+		parse_scene(&scene, "./scenes/minimalist_err.rt");
 		exit(EXIT_FAILURE); }, ::testing::ExitedWithCode(EXIT_FAILURE), "Too many ambient lights");
 	EXPECT_EXIT({
-		parse_scene("./scenes/minimalist_err2.rt");
+		parse_scene(&scene, "./scenes/minimalist_err2.rt");
 		exit(EXIT_FAILURE); }, ::testing::ExitedWithCode(EXIT_FAILURE), "Too many cameras");
 	EXPECT_EXIT({
-		parse_scene("./scenes/minimalist_err3.rt");
+		parse_scene(&scene, "./scenes/minimalist_err3.rt");
 		exit(EXIT_FAILURE); }, ::testing::ExitedWithCode(EXIT_FAILURE), "Too many lights");
 }

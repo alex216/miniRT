@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/09 21:26:30 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:02:47 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ static void	validate_scene(t_object_count *object_count)
 		fatal_error("Too many lights");
 }
 
-t_scene	*parse_scene(const char *filename)
+void	parse_scene(t_scene *scene, const char *filename)
 {
-	t_scene			*scene;
 	int				fd;
 	char			*line;
 	t_object_count	object_count;
 
 	object_count = (t_object_count){0, 0, 0};
-	scene = ft_xmalloc(sizeof(t_scene));
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		exit(EXIT_FAILURE);
@@ -47,5 +45,5 @@ t_scene	*parse_scene(const char *filename)
 		free(line);
 	}
 	close(fd);
-	return (scene);
+	return ;
 }

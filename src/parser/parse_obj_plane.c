@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 19:03:52 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/13 22:00:27 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:32:00 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	parse_plane(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing plane color");
-	plane->color = parse_color(token);
+	plane->color = vec3_scale(parse_color(token), 1.0 / 255.0);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (token)

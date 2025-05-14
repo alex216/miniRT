@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 15:51:42 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/13 22:09:01 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/14 15:30:47 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	parse_sphere(const char **line, t_scene *scene)
 	token = next_token(line, ft_isspace);
 	if (!token)
 		fatal_error("Missing sphere color");
-	sphere->color = parse_color(token);
+	sphere->color = vec3_scale(parse_color(token), 1.0 / 255.0);
 	free(token);
 	token = next_token(line, ft_isspace);
 	if (token)
