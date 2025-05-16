@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 16:13:55 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 16:14:39 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/16 21:32:08 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_rgb	parse_color(const char *str)
 	if (color.x < 0 || color.x > 255 || color.y < 0 || color.y > 255
 		|| color.z < 0 || color.z > 255)
 		fatal_error("Color values must be in the range [0, 255]");
-	free(result);
+	ft_free_strs(result);
 	return (color);
 }
 
@@ -52,7 +52,7 @@ static t_vec3	parse_vector_internal(const char *str, const double min,
 	vector.z = ft_atof(result[2]);
 	if (errno == ERANGE || vector.z < min || vector.z > max)
 		fatal_error("Vector value out of range");
-	free(result);
+	ft_free_strs(result);
 	return (vector);
 }
 

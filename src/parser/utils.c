@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 19:40:10 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/12 16:36:04 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/16 21:32:18 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ bool	is_vec3(const char *str)
 		free(result);
 		return (false);
 	}
-	free(result);
+	ft_free_strs(result);
 	return (true);
 }
