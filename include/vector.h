@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/27 11:00:30 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/11 22:10:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/17 20:16:52 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,9 @@ t_vec3	vec3_reflect(t_vec3 incident, t_vec3 normal);
 // metric.c
 bool	vec3_is_parallel(t_vec3 a, t_vec3 b);
 double	vec3_length(t_vec3 a);
+
+// component.c
+t_vec3	vec3_parallel_component(t_vec3 a, t_vec3 b);
+t_vec3	vec3_perpendicular_component(t_vec3 a, t_vec3 b);
 
 #endif
