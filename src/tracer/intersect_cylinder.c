@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:06:27 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/17 20:58:30 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/17 22:38:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,18 @@ static t_disk	create_disk_from_cylinder(t_cylinder *cy, bool is_top)
 	t_disk	disk;
 
 	if (is_top)
+	{
 		disk.center = vec3_add(cy->center, vec3_scale(cy->axis, cy->height));
+		disk.normal = vec3_normalize(cy->axis);
+	}
 	else
+	{
 		disk.center = cy->center;
+		disk.normal = vec3_normalize(vec3_negate(cy->axis));
+	}
 	disk.normal = cy->axis;
 	disk.radius = cy->radius;
+	disk.color = cy->color;
 	return (disk);
 }
 
