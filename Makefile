@@ -40,8 +40,9 @@ SRC			= $(SRC_DIR)/main.c \
 				$(SRC_DIR)/scene/stub_lighting.c \
 				$(SRC_DIR)/tracer/calc_lighting.c \
 				$(SRC_DIR)/tracer/intersect_object.c \
-				$(SRC_DIR)/tracer/trace_ray.c \
+				$(SRC_DIR)/tracer/quadratic.c \
 				$(SRC_DIR)/tracer/render.c \
+				$(SRC_DIR)/tracer/trace_ray.c \
 				$(SRC_DIR)/utils/error.c \
 				$(SRC_DIR)/vec3/arithmetic.c \
 				$(SRC_DIR)/vec3/component.c \

@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 01:44:48 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/10 23:31:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/17 20:23:32 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,24 @@ typedef struct s_hit_record
 	t_rgb	color;
 }	t_hit_record;
 
+typedef struct s_quadratic_coef
+{
+	double	a;
+	double	b;
+	double	c;
+}	t_quadratic_coef;
+
+typedef struct s_quadratic_result
+{
+	double	s1;
+	double	s2;
+}	t_quadratic_result;
+
 void	render(t_scene scene, t_mlx_conf *mlx_conf);
 bool	intersect_object(t_ray ray, t_object *obj, t_hit_record *hit_record);
 t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene, t_ray ray);
 t_rgb	trace_ray(t_ray ray, t_scene scene);
+
+bool	solve_quadratic(t_quadratic_coef coef, t_quadratic_result *result);
 
 #endif
