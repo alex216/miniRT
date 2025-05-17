@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:39:24 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/11 00:04:08 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/17 19:10:15 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ static bool	intersect_sphere(t_ray ray, t_sphere *sphere,
 	return (true);
 }
 
-static bool	intersect_plane(t_ray ray, t_plane *plane,
-								t_hit_record *hit_record)
+bool	intersect_plane(t_ray ray, t_plane *plane, t_hit_record *hit_record)
 {
 	const double	denom = vec3_dot(plane->normal, ray.direction);
 	double			t;
