@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/13 21:55:52 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/17 22:09:16 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void				stub_init_scene(t_scene *scene);
 int					stub_add_objects(t_scene *scene);
 int					stub_add_lights(t_scene *scene);
 
-enum e_object_type	get_object_type(t_list *object);
+t_object_type		get_object_type(t_list *object);
 
 t_plane				*get_plane_data(t_list *object);
 t_sphere			*get_sphere_data(t_list *object);
