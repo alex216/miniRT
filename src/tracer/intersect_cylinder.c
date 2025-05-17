@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:06:27 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/17 22:38:17 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/17 22:52:58 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static t_disk	create_disk_from_cylinder(t_cylinder *cy, bool is_top)
 	if (is_top)
 	{
 		disk.center = vec3_add(cy->center, vec3_scale(cy->axis, cy->height));
-		disk.normal = vec3_normalize(cy->axis);
+		disk.normal = cy->axis;
 	}
 	else
 	{
 		disk.center = cy->center;
-		disk.normal = vec3_normalize(vec3_negate(cy->axis));
+		disk.normal = vec3_negate(cy->axis);
 	}
 	disk.normal = cy->axis;
 	disk.radius = cy->radius;
@@ -70,6 +70,7 @@ bool	intersect_cylinder(t_ray ray, t_cylinder *cy, t_hit_record *hit_record)
 	double			min_t;
 
 	ft_bzero(temp_records, sizeof(temp_records));
+	cy->axis = vec3_normalize(cy->axis);
 	hit_results[SIDE] = intersect_cylinder_side(ray, cy, &temp_records[SIDE]);
 	hit_results[BOTTOM] = intersect_disk(ray,
 			create_disk_from_cylinder(cy, false), &temp_records[BOTTOM]);

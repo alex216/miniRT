@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:34:36 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/17 21:18:49 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/17 22:53:53 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	is_intersection_in_cylinder_height(t_ray ray, t_cylinder *cy, double t)
 		= vec3_dot(vec3_sub(ray.origin, cy->center), cy->axis);
 	const double	height = dot_w_axis + t * dot_d_axis;
 
-	return (0 < height && height < cy->height);
+	return (0 <= height && height <= cy->height);
 }
 
 void	set_cylinder_side_record(t_ray ray, t_cylinder *cy, double t,
