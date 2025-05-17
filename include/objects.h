@@ -22,7 +22,7 @@ typedef enum e_object_type
 	PLANE,
 	CYLINDER,
 	CONE
-}						t_object_type;
+}			t_object_type;
 
 typedef struct s_sphere
 {
