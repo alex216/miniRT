@@ -29,12 +29,25 @@ LIBFT_DIR	= libft
 LIBMLX_DIR	= libmlx
 
 # files
-SRC			= $(SRC_DIR)/main.c \
+SRC			=	$(SRC_DIR)/main.c \
+				$(SRC_DIR)/parser/parse_token_scalar.c \
+				$(SRC_DIR)/parser/parse_token_vector.c \
+				$(SRC_DIR)/parser/parse_line.c \
+				$(SRC_DIR)/parser/parse_scene.c \
+				$(SRC_DIR)/parser/parse_obj_cone.c \
+				$(SRC_DIR)/parser/parse_obj_cylinder.c \
+				$(SRC_DIR)/parser/parse_obj_plane.c \
+				$(SRC_DIR)/parser/parse_obj_sphere.c \
+				$(SRC_DIR)/parser/utils.c \
 				$(SRC_DIR)/mlx_utils/constructor.c \
 				$(SRC_DIR)/mlx_utils/destructor.c \
 				$(SRC_DIR)/mlx_utils/handle_events.c \
 				$(SRC_DIR)/mlx_utils/plot_pixel.c \
+				$(SRC_DIR)/utils/ft_xlstnew.c \
+				$(SRC_DIR)/utils/ft_atof.c \
 				$(SRC_DIR)/scene/constructor.c \
+				$(SRC_DIR)/scene/get_data.c \
+				$(SRC_DIR)/scene/get_type.c \
 				$(SRC_DIR)/scene/stub_init_scene.c \
 				$(SRC_DIR)/scene/stub_add_objects.c \
 				$(SRC_DIR)/scene/stub_lighting.c \
@@ -106,3 +119,9 @@ re: fclean all
 .PHONY: norm
 norm:
 	norminette $(INC_DIR) $(SRC_DIR) $(LIBFT_DIR)
+
+.PHONY: qnorm
+qnorm:
+	make norm | grep -v 'OK'
+
+include unit_test.mk
