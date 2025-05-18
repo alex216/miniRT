@@ -52,6 +52,7 @@ SRC			=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/scene/stub_add_objects.c \
 				$(SRC_DIR)/scene/stub_lighting.c \
 				$(SRC_DIR)/tracer/calc_lighting.c \
+				$(SRC_DIR)/tracer/find_closest_hit.c \
 				$(SRC_DIR)/tracer/intersect_cylinder_side.c \
 				$(SRC_DIR)/tracer/intersect_cylinder.c \
 				$(SRC_DIR)/tracer/intersect_disk.c \

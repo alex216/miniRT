@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:06:27 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/18 17:44:33 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/18 17:46:31 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,29 +38,6 @@ static t_disk	create_disk_from_cylinder(t_cylinder *cy, bool is_top)
 	disk.radius = cy->radius;
 	disk.color = cy->color;
 	return (disk);
-}
-
-static bool	find_closest_hit( bool hit_results[], t_hit_record temp_records[],
-				int count, int *min_index)
-{
-	bool	hit_found;
-	int		i;
-	double	min_t;
-
-	hit_found = false;
-	*min_index = -1;
-	min_t = INFINITY;
-	i = 0;
-	while (i < count)
-	{
-		if (hit_results[i] && ft_fchmin(&min_t, temp_records[i].t))
-		{
-			*min_index = i;
-			hit_found = true;
-		}
-		i++;
-	}
-	return (hit_found);
 }
 
 bool	intersect_cylinder(t_ray ray, t_cylinder *cy, t_hit_record *hit_record)
