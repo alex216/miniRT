@@ -6,14 +6,14 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 17:34:36 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/17 22:53:53 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/18 16:13:08 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tracer.h"
 #include "vector.h"
 
-t_quadratic_coef	calc_quadratic_coef(t_ray ray, t_cylinder *cy)
+static t_quadratic_coef	calc_quadratic_coef(t_ray ray, t_cylinder *cy)
 {
 	const t_vec3	w = vec3_sub(ray.origin, cy->center);
 	const t_vec3	m = vec3_perpendicular_component(ray.direction, cy->axis);
@@ -26,7 +26,8 @@ t_quadratic_coef	calc_quadratic_coef(t_ray ray, t_cylinder *cy)
 	});
 }
 
-bool	is_intersection_in_cylinder_height(t_ray ray, t_cylinder *cy, double t)
+static bool	is_intersection_in_cylinder_height(
+				t_ray ray, t_cylinder *cy, double t)
 {
 	const double	dot_d_axis = vec3_dot(ray.direction, cy->axis);
 	const double	dot_w_axis
@@ -36,8 +37,8 @@ bool	is_intersection_in_cylinder_height(t_ray ray, t_cylinder *cy, double t)
 	return (0 <= height && height <= cy->height);
 }
 
-void	set_cylinder_side_record(t_ray ray, t_cylinder *cy, double t,
-			t_hit_record *record)
+static void	set_cylinder_side_record(
+				t_ray ray, t_cylinder *cy, double t, t_hit_record *record)
 {
 	record->t = t;
 	record->point = vec3_add(ray.origin, vec3_scale(ray.direction, t));
