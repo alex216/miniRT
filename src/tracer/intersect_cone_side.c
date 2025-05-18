@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 17:26:31 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/18 18:40:23 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/18 19:03:35 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static bool	is_intersection_in_cone_height(t_ray ray, t_cone *cone, double t)
 	return (0 <= height_proj && height_proj <= cone->height);
 }
 
-static void set_cone_side_record(
-			t_ray ray, t_cone *cone, double t, t_hit_record *record)
+static void	set_cone_side_record(
+				t_ray ray, t_cone *cone, double t, t_hit_record *record)
 {
 	t_vec3	ap;
 	double	proj_len;
