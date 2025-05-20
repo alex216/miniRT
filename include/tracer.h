@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 01:44:48 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/17 21:04:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/18 17:51:09 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,17 @@ void	render(t_scene scene, t_mlx_conf *mlx_conf);
 bool	intersect_object(t_ray ray, t_object *obj, t_hit_record *hit_record);
 bool	intersect_plane(t_ray ray, t_plane *plane, t_hit_record *hit_record);
 bool	intersect_cylinder(t_ray ray, t_cylinder *cy, t_hit_record *hit_record);
+bool	intersect_cone(t_ray ray, t_cone *cone, t_hit_record *hit_record);
 bool	intersect_disk(t_ray ray, t_disk disk, t_hit_record *record);
 bool	intersect_cylinder_side(t_ray ray, t_cylinder *cy,
 			t_hit_record *record);
+bool	intersect_cone_side(t_ray ray, t_cone *cone, t_hit_record *record);
 
 t_rgb	calc_lighting(t_hit_record hit_record, t_scene scene, t_ray ray);
 t_rgb	trace_ray(t_ray ray, t_scene scene);
+
+bool	find_closest_hit(bool hit_results[], t_hit_record temp_records[],
+			int count, int *min_index);
 
 bool	solve_quadratic(t_quadratic_coef coef, t_quadratic_result *result);
 

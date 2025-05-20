@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:39:24 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/17 20:59:39 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/18 17:55:45 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ bool	intersect_object(t_ray ray, t_object *obj, t_hit_record *hit_record)
 		return (intersect_plane(ray, obj->data, hit_record));
 	if (obj->type == CYLINDER)
 		return (intersect_cylinder(ray, obj->data, hit_record));
+	if (obj->type == CONE)
+		return (intersect_cone(ray, obj->data, hit_record));
 	return (false);
 }
