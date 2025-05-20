@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:23:49 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/14 15:02:47 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/18 19:58:06 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	parse_scene(t_scene *scene, const char *filename)
 	object_count = (t_object_count){0, 0, 0};
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		exit(EXIT_FAILURE);
+		fatal_error("Error: Failed to open file");
 	while (true)
 	{
 		line = get_next_line(fd);
