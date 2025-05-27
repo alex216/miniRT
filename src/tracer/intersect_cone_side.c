@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 17:26:31 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/18 19:03:35 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/27 22:16:17 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,12 @@ bool	intersect_cone_side(t_ray ray, t_cone *cone, t_hit_record *record)
 		return (false);
 	if (!solve_quadratic(qcoef, &qresult))
 		return (false);
-	if (qresult.s1 < RAY_T_MIN)
-		return (false);
-	if (is_intersection_in_cone_height(ray, cone, qresult.s1))
+	if (qresult.s1 >= RAY_T_MIN && is_intersection_in_cone_height(ray, cone, qresult.s1))
 	{
 		set_cone_side_record(ray, cone, qresult.s1, record);
 		return (true);
 	}
-	if (is_intersection_in_cone_height(ray, cone, qresult.s2))
+	if (qresult.s2 >= RAY_T_MIN && is_intersection_in_cone_height(ray, cone, qresult.s2))
 	{
 		set_cone_side_record(ray, cone, qresult.s2, record);
 		return (true);
