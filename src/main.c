@@ -6,7 +6,7 @@
 /*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:17:12 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/18 19:58:39 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/27 22:52:50 by yliu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	validate_input(int argc, char **argv)
 {
 	if (argc != 2)
 		fatal_error("Error: Incorrect number of arguments.\n");
-	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 3, ".rt", 3) != 0)
+	if (ft_strncmp(argv[1] + ft_max(0, ft_strlen(argv[1]) - 3), ".rt", 3) != 0)
 		fatal_error("Error: Invalid file extension. Expected .rt\n");
 }
 
