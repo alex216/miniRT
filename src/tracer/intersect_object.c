@@ -6,7 +6,7 @@
 /*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:39:24 by reasuke           #+#    #+#             */
-/*   Updated: 2025/05/18 17:55:45 by reasuke          ###   ########.fr       */
+/*   Updated: 2025/05/27 20:20:02 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ bool	intersect_plane(t_ray ray, t_plane *plane, t_hit_record *hit_record)
 	if (t < RAY_T_MIN)
 		return (false);
 	if (denom > 0)
-		normal = vec3_normalize(plane->normal);
-	else
 		normal = vec3_normalize(vec3_scale(plane->normal, -1));
+	else
+		normal = vec3_normalize(plane->normal);
 	hit_record->t = t;
 	hit_record->color = plane->color;
 	hit_record->point = vec3_add(ray.origin,
