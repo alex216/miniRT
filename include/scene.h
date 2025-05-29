@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yliu <yliu@student.42.jp>                  +#+  +:+       +#+        */
+/*   By: reasuke <reasuke@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 23:34:31 by yliu              #+#    #+#             */
-/*   Updated: 2025/05/17 22:09:16 by yliu             ###   ########.fr       */
+/*   Updated: 2025/05/29 16:02:16 by reasuke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,6 @@ t_sphere			*construct_sphere_data(t_vec3 center, double radius,
 t_plane				*construct_plane_data(t_vec3 point, t_vec3 normal,
 						t_rgb color);
 t_object			*construct_object(t_object_type type, void *data);
-
-void				stub_init_scene(t_scene *scene);
-int					stub_add_objects(t_scene *scene);
-int					stub_add_lights(t_scene *scene);
 
 t_object_type		get_object_type(t_list *object);
 

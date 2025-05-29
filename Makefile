@@ -48,9 +48,6 @@ SRC			=	$(SRC_DIR)/main.c \
 				$(SRC_DIR)/scene/constructor.c \
 				$(SRC_DIR)/scene/get_data.c \
 				$(SRC_DIR)/scene/get_type.c \
-				$(SRC_DIR)/scene/stub_init_scene.c \
-				$(SRC_DIR)/scene/stub_add_objects.c \
-				$(SRC_DIR)/scene/stub_lighting.c \
 				$(SRC_DIR)/tracer/calc_lighting.c \
 				$(SRC_DIR)/tracer/find_closest_hit.c \
 				$(SRC_DIR)/tracer/intersect_cone_side.c \
